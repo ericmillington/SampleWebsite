@@ -75,21 +75,25 @@ You can also just open `index.html` in a browser.
 
 ---
 
-## Example: pizza restaurant (`examples/pizza/`)
+## Example: rustic pizzeria (`examples/pizza/`)
 
-A worked example of the rebrand. It loads the **same** `assets/css` and `assets/js` as the base template, so the whole re-skin happens in the page itself:
+This example shows how far you can push the template without editing the shared files. The page loads three stylesheets in order:
 
-| Template piece | Pizza version |
-|---|---|
-| Theme knobs | `--hue: 30` (tomato) · `--accent-hue: 88` (cheese) · Fraunces display font, set in a small `<style>` block |
-| Primary CTA | "Get a free quote" → **"Order online"**, with "Call to order" as the secondary |
-| Hero badge | Live **Open now / Closed** status worked out from the opening hours |
-| Services | → **Menu** with prices and dietary tags |
-| Pricing | → **Specials** (lunch combo, family feast, Tuesday deal) |
-| Quote form | → **Catering enquiry** (date, guest count) and its own thank-you page |
-| Schema | `LocalBusiness` → `Restaurant` (`servesCuisine`, `hasMenu`, hours, `OrderAction`) |
+```
+../../assets/css/theme.css   shared tokens          (unchanged)
+../../assets/css/main.css    shared components      (unchanged)
+rustic.css                   the "skin" for this client
+```
 
-To start a new client from the example, copy the folder, change the knobs in its `<style>` block, and rewrite the copy.
+`rustic.css` changes:
+
+- **Tokens:** a parchment, brick-red, olive and espresso palette with its own dark mode, square-ish corners, and hard "letterpress" shadows instead of soft blur.
+- **Fonts:** Alfa Slab One for headlines, Lora for body text, and Caveat for hand-written notes.
+- **Textures:** paper grain, brick, wood grain, gingham and torn-paper edges, all made from tiny inline SVGs or CSS gradients with no image files.
+- **Restyled components:** the same markup gets a new look. Pricing cards become a chalkboard specials board, testimonials become taped-up notes, stats sit on a wooden board, and the catering panel is a brick wall.
+- **New components:** a printed menu with dotted price leaders, an order receipt with a torn edge, a rubber stamp, and a chalk sign.
+
+The shared JavaScript still runs the mobile menu, reveal animations, counters, form validation and click tracking. To make a skin for another client, copy `rustic.css`, change the tokens at the top, and keep only the component overrides you want.
 
 ---
 

@@ -1,0 +1,390 @@
+/* ==========================================================================
+   RUSTIC SKIN — layered on top of theme.css + main.css
+   --------------------------------------------------------------------------
+   Shows how far the template can be pushed without touching shared files:
+     1. Tokens   → new palette, fonts, radii and hard "letterpress" shadows
+     2. Textures → paper grain, brick, wood, gingham, chalkboard
+     3. Components restyled → buttons, cards, reviews, pricing, steps…
+     4. New bits → printed menu with dotted leaders, order ticket, stamps
+   Load order: theme.css → main.css → rustic.css
+   ========================================================================== */
+
+/* ---- 1. Tokens ----------------------------------------------------------- */
+:root {
+  --hue: 30; --chroma: 0.15; --accent-hue: 125; --accent-chroma: 0.1;
+
+  --font-display: "Alfa Slab One", Rockwell, "Roboto Slab", serif;
+  --font-body: "Lora", Georgia, "Times New Roman", serif;
+  --font-hand: "Caveat", "Segoe Print", cursive;
+
+  --radius-sm: 4px; --radius: 6px; --radius-lg: 10px; --radius-pill: 6px;
+
+  --brand: oklch(47% 0.16 30);          /* brick / tomato */
+  --brand-strong: oklch(39% 0.14 30);
+  --brand-soft: oklch(91% 0.045 55);
+  --brand-softer: oklch(94% 0.035 75);
+  --on-brand: oklch(97% 0.02 85);
+  --accent: oklch(52% 0.1 125);         /* olive */
+  --accent-strong: oklch(44% 0.1 125);
+  --accent-soft: oklch(91% 0.045 120);
+  --on-accent: oklch(97% 0.02 85);
+
+  --bg: oklch(95% 0.028 82);            /* parchment */
+  --surface: oklch(98% 0.016 85);
+  --surface-2: oklch(90.5% 0.04 76);    /* kraft */
+  --ink: oklch(25% 0.035 50);           /* espresso */
+  --ink-2: oklch(40% 0.04 50);
+  --ink-3: oklch(53% 0.04 55);
+  --line: oklch(84% 0.035 70);
+  --line-strong: oklch(68% 0.045 60);
+  --star: oklch(68% 0.15 65);
+  --success: oklch(50% 0.1 135);
+
+  --shadow-sm: 2px 2px 0 oklch(25% 0.035 50 / 0.12);
+  --shadow: 5px 5px 0 oklch(25% 0.035 50 / 0.13);
+  --shadow-lg: 8px 8px 0 oklch(25% 0.035 50 / 0.14), 0 24px 40px -24px oklch(25% 0.05 50 / 0.35);
+  --shadow-brand: 4px 4px 0 var(--ink);
+
+  --gradient-brand: linear-gradient(165deg, oklch(49% 0.16 32), oklch(40% 0.14 27));
+  --gradient-text: linear-gradient(var(--brand), var(--brand));
+
+  /* Textures (tiny inline SVGs, no image requests) */
+  --tx-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .22 0 0 0 0 .1 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --tx-brick: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='60'%3E%3Cpath d='M0 1.5H120M0 31.5H120M1.5 0V30M61.5 30V60' fill='none' stroke='%23000' stroke-opacity='.22' stroke-width='3'/%3E%3C/svg%3E");
+  --wood: repeating-linear-gradient(93deg, oklch(31% 0.05 55) 0 3px, oklch(34% 0.055 58) 3px 11px, oklch(29% 0.045 50) 11px 15px, oklch(33% 0.05 56) 15px 26px);
+  --chalk: oklch(95% 0.012 100 / 0.92);
+  --board: oklch(25% 0.022 165);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --brand: oklch(67% 0.15 36); --brand-strong: oklch(75% 0.13 40);
+    --brand-soft: oklch(31% 0.06 40); --brand-softer: oklch(26% 0.04 50);
+    --on-brand: oklch(18% 0.02 50);
+    --accent: oklch(68% 0.11 125); --accent-strong: oklch(74% 0.1 125); --on-accent: oklch(18% 0.02 120);
+    --bg: oklch(19% 0.018 55); --surface: oklch(23% 0.022 55); --surface-2: oklch(26% 0.026 60);
+    --ink: oklch(93% 0.025 82); --ink-2: oklch(80% 0.03 80); --ink-3: oklch(66% 0.03 75);
+    --line: oklch(33% 0.025 55); --line-strong: oklch(44% 0.03 60);
+    --shadow: 5px 5px 0 oklch(0% 0 0 / 0.35); --shadow-lg: 8px 8px 0 oklch(0% 0 0 / 0.4);
+    --shadow-brand: 4px 4px 0 oklch(0% 0 0 / 0.6);
+    --gradient-text: linear-gradient(var(--brand), var(--brand));
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --brand: oklch(67% 0.15 36); --brand-strong: oklch(75% 0.13 40);
+  --brand-soft: oklch(31% 0.06 40); --brand-softer: oklch(26% 0.04 50);
+  --on-brand: oklch(18% 0.02 50);
+  --accent: oklch(68% 0.11 125); --accent-strong: oklch(74% 0.1 125); --on-accent: oklch(18% 0.02 120);
+  --bg: oklch(19% 0.018 55); --surface: oklch(23% 0.022 55); --surface-2: oklch(26% 0.026 60);
+  --ink: oklch(93% 0.025 82); --ink-2: oklch(80% 0.03 80); --ink-3: oklch(66% 0.03 75);
+  --line: oklch(33% 0.025 55); --line-strong: oklch(44% 0.03 60);
+  --shadow: 5px 5px 0 oklch(0% 0 0 / 0.35); --shadow-lg: 8px 8px 0 oklch(0% 0 0 / 0.4);
+  --shadow-brand: 4px 4px 0 oklch(0% 0 0 / 0.6);
+  --gradient-text: linear-gradient(var(--brand), var(--brand));
+  color-scheme: dark;
+}
+
+/* ---- 2. Base & typography ---------------------------------------------- */
+body { font-size: 1.075rem; }
+body::after { /* paper grain over everything */
+  content: ""; position: fixed; inset: 0; z-index: 200; pointer-events: none;
+  background-image: var(--tx-grain); opacity: .32; mix-blend-mode: multiply;
+}
+:root[data-theme="dark"] body::after { mix-blend-mode: screen; opacity: .08; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) body::after { mix-blend-mode: screen; opacity: .08; } }
+
+h1, h2 { font-weight: 400; letter-spacing: 0; line-height: 1.08; }
+h1 { font-size: clamp(2.4rem, 1.5rem + 3vw, 3.7rem); font-weight: 400; letter-spacing: -.005em; }
+h2 { font-size: clamp(2rem, 1.4rem + 2.2vw, 3rem); }
+h3 { font-family: var(--font-body); font-weight: 700; font-size: 1.3rem; letter-spacing: 0; }
+.lede { font-size: clamp(1.1rem, 1rem + .35vw, 1.25rem); }
+
+.hand { font-family: var(--font-hand); font-weight: 700; }
+.eyebrow {
+  font-family: var(--font-hand); font-size: 1.6rem; font-weight: 700; letter-spacing: 0; text-transform: none;
+  color: var(--brand); rotate: -2deg;
+}
+.eyebrow::before, .section-head--center .eyebrow::after { width: 26px; height: 3px; border-radius: 3px; }
+
+/* Hand-written highlight in the H1 */
+.hl { font-family: var(--font-hand); font-weight: 700; font-size: 1.2em; color: var(--brand); display: inline-block; rotate: -2deg; white-space: normal; }
+.hl__underline { color: var(--accent); bottom: -.02em; height: .25em; }
+
+/* ---- 3. Textured bands --------------------------------------------------- */
+.gingham {
+  height: 26px;
+  background:
+    repeating-linear-gradient(90deg, oklch(47% .16 30 / .55) 0 26px, transparent 26px 52px),
+    repeating-linear-gradient(0deg, oklch(47% .16 30 / .55) 0 13px, transparent 13px 26px),
+    oklch(97% .015 85);
+  border-block: 2px solid oklch(39% .14 30);
+}
+.torn-top, .torn-bottom { position: relative; }
+.torn-top::before, .torn-bottom::after {
+  content: ""; position: absolute; left: 0; right: 0; height: 14px; z-index: 1;
+  background: linear-gradient(135deg, var(--bg) 33%, transparent 33%) 0 0 / 22px 14px, linear-gradient(225deg, var(--bg) 33%, transparent 33%) 0 0 / 22px 14px;
+}
+.torn-top::before { top: -1px; }
+.torn-bottom::after { bottom: -1px; rotate: 180deg; }
+
+/* ---- 4. Header & announce ---------------------------------------------- */
+.announce { background: oklch(39% .14 30); color: oklch(97% .02 85); font-family: var(--font-body); }
+.announce__tag { font-family: var(--font-hand); font-size: 1rem; text-transform: none; letter-spacing: 0; padding: 0 10px; background: var(--accent); color: var(--on-accent); rotate: -3deg; }
+.header.is-scrolled { background: color-mix(in oklch, var(--bg) 90%, transparent); box-shadow: 0 2px 0 var(--line); }
+.logo { font-weight: 400; letter-spacing: .01em; font-size: 1.4rem; }
+.nav__link { font-weight: 600; font-size: 1rem; }
+.nav__link:hover, .nav__link[aria-current] { background: var(--surface-2); }
+
+/* ---- 5. Buttons: letterpress style ------------------------------------- */
+.btn {
+  border-radius: var(--radius); border-width: 2px; border-color: var(--ink);
+  font-family: var(--font-body); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; font-size: .92rem;
+  box-shadow: 3px 3px 0 var(--ink);
+}
+.btn:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0 var(--ink); border-color: var(--ink); }
+.btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+.btn--primary { border-color: var(--ink); box-shadow: 3px 3px 0 var(--ink); }
+.btn--primary:hover { border-color: var(--ink); box-shadow: 5px 5px 0 var(--ink); }
+.btn--primary::after { display: none; }
+.btn--lg { font-size: 1rem; }
+.btn--light, .btn--outline-light { border-color: oklch(15% .02 50); box-shadow: 3px 3px 0 oklch(15% .02 50); }
+.btn--light { --btn-bg: oklch(97% .02 85); --btn-fg: oklch(25% .035 50); }
+.btn--outline-light { --btn-fg: oklch(97% .02 85); border-color: oklch(97% .02 85); box-shadow: 3px 3px 0 oklch(15% .02 50 / .6); }
+.btn--light:hover, .btn--outline-light:hover { border-color: inherit; box-shadow: 5px 5px 0 oklch(15% .02 50); }
+.link-arrow { font-family: var(--font-hand); font-size: 1.35rem; font-weight: 700; }
+
+/* ---- 6. Hero ------------------------------------------------------------- */
+.hero__bg::before { /* flour dust instead of grid */
+  background-image: radial-gradient(oklch(100% 0 0 / .7) 1.2px, transparent 1.6px), radial-gradient(oklch(100% 0 0 / .5) 1px, transparent 1.4px);
+  background-size: 34px 34px, 23px 23px; background-position: 0 0, 11px 17px;
+  mask-image: radial-gradient(ellipse 50% 60% at 75% 45%, #000 10%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 50% 60% at 75% 45%, #000 10%, transparent 70%);
+  opacity: .9;
+}
+.blob { display: none; }
+.pill-badge { border: 2px dashed var(--line-strong); box-shadow: none; background: var(--surface); font-family: var(--font-body); }
+.pill-badge__new { background: var(--accent); color: var(--on-accent); }
+.avatar { border-color: var(--bg); background: oklch(52% .1 var(--h, 30)); }
+
+.hero__visual { min-height: 520px; }
+.hero__photo { inset: 0; background: none; box-shadow: none; overflow: visible; border-radius: 0; }
+.hero__photo-art { overflow: visible; }
+.peel { filter: drop-shadow(10px 14px 0 oklch(25% .035 50 / .18)); }
+
+.annotation {
+  position: absolute; left: -4%; top: 2%; z-index: 2; display: flex; align-items: flex-end; gap: 4px;
+  font-family: var(--font-hand); font-size: 1.7rem; font-weight: 700; color: var(--ink-2); rotate: -6deg; line-height: 1;
+}
+.annotation svg { width: 70px; height: 50px; color: var(--ink-2); margin-bottom: -26px; }
+
+/* Order ticket with torn (zig-zag) bottom */
+.ticket {
+  border: 0; border-radius: 2px; box-shadow: none; background: oklch(98.5% .01 90); color: oklch(25% .035 50);
+  padding-bottom: 26px; rotate: -3deg; filter: drop-shadow(6px 8px 0 oklch(25% .035 50 / .18));
+  -webkit-mask: linear-gradient(#000 0 0) top / 100% calc(100% - 9px) no-repeat, conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / 18px 9px repeat-x;
+          mask: linear-gradient(#000 0 0) top / 100% calc(100% - 9px) no-repeat, conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) bottom / 18px 9px repeat-x;
+  font-family: "Courier New", ui-monospace, monospace;
+}
+.ticket .fc-label { font-family: inherit; color: oklch(45% .03 50); letter-spacing: .12em; }
+.ticket .fc-title { font-family: var(--font-hand); font-size: 1.6rem; line-height: 1; color: oklch(47% .16 30); }
+.ticket .fc-sub { color: oklch(40% .04 50); font-size: .8rem; }
+.ticket hr { border: 0; border-top: 2px dashed oklch(70% .03 60); margin: 12px 0; }
+.ticket .fc-total { display: flex; justify-content: space-between; font-weight: 700; font-size: .9rem; }
+
+/* Mini chalkboard sign */
+.sign {
+  background: var(--board); color: var(--chalk); border: 8px solid oklch(42% .07 58); border-radius: 4px;
+  box-shadow: inset 0 0 0 1px oklch(0% 0 0 / .4), 6px 8px 0 oklch(25% .035 50 / .2); rotate: 4deg; text-align: center;
+}
+.sign .fc-label { color: oklch(85% .05 95); font-family: var(--font-hand); text-transform: none; letter-spacing: 0; font-size: 1.15rem; }
+.sign .fc-title { font-family: var(--font-hand); font-size: 1.9rem; line-height: 1; margin-top: 2px; }
+.sign .fc-big { font-family: var(--font-hand); color: oklch(84% .12 85); font-size: 2.4rem; }
+
+/* Round rubber stamp */
+.stamp {
+  display: grid; place-items: center; text-align: center; width: 150px !important; height: 150px; padding: 0 !important;
+  border-radius: 50% !important; background: transparent !important; border: 3px solid var(--brand) !important; box-shadow: none !important;
+  outline: 2px solid var(--brand); outline-offset: -11px; color: var(--brand); rotate: -12deg; animation: none !important;
+  font-family: var(--font-display); text-transform: uppercase; line-height: 1.05; opacity: .92;
+}
+.stamp small { display: block; font-family: var(--font-body); font-weight: 700; font-size: .62rem; letter-spacing: .16em; }
+.stamp strong { font-size: 1.9rem; font-weight: 400; display: block; margin-block: 2px; }
+.float-card--growth.stamp { right: 0; bottom: 4%; background: color-mix(in oklch, var(--bg) 70%, transparent) !important; }
+.float-card--rating { top: 4%; right: -2%; width: 200px; }
+.float-card--booking { width: 270px; bottom: 6%; left: -2%; }
+
+@media (max-width: 960px) { .annotation { left: 2%; } }
+@media (max-width: 520px) {
+  .hero__visual { min-height: 400px; }
+  .annotation { display: none; }
+  .float-card--rating { width: 170px; top: -10px; right: -4px; }
+  .sign .fc-title { font-size: 1.5rem; }
+  .float-card--booking { width: 200px; bottom: 2%; left: 0; padding: 12px 14px 22px; }
+  .ticket .fc-sub { display: none; }
+  .ticket hr:first-of-type { display: none; }
+  .float-card--rating.sign { width: 150px; padding: 10px; border-width: 6px; }
+  .float-card--growth.stamp { display: none; }
+}
+
+/* ---- 7. Press strip ------------------------------------------------------ */
+.trust__label { font-family: var(--font-hand); font-size: 1.4rem; font-weight: 700; color: var(--ink-2); }
+.wordmark { font-family: var(--font-body); font-style: italic; font-weight: 700; font-size: 1.45rem; color: var(--ink-2); }
+.wordmark--slab { font-family: var(--font-display); font-style: normal; font-weight: 400; letter-spacing: .04em; text-transform: uppercase; font-size: 1.1rem; }
+
+/* ---- 8. Cards & printed menu ------------------------------------------- */
+.card { border: 2px solid var(--line-strong); border-radius: var(--radius); background: var(--surface); }
+.card:hover { transform: translate(-2px, -2px); box-shadow: var(--shadow); border-color: var(--ink); }
+.card::before { display: none; }
+.icon-chip { border-radius: 50%; background: var(--brand-soft); border: 2px dashed var(--brand); }
+
+.menu-board { display: grid; grid-template-columns: .9fr 1.1fr; gap: 32px; align-items: start; }
+.feature-dish {
+  position: relative; color: oklch(97% .02 85); padding: clamp(28px, 4vw, 44px); border-radius: var(--radius);
+  background: var(--tx-brick), linear-gradient(170deg, oklch(0% 0 0 / 0), oklch(0% 0 0 / .4)), var(--brand);
+  background-color: oklch(47% .16 30);
+  background-image: linear-gradient(170deg, oklch(0% 0 0 / .05), oklch(0% 0 0 / .45)), var(--tx-brick);
+  border: 2px solid oklch(25% .035 50); box-shadow: 8px 8px 0 oklch(25% .035 50);
+}
+.feature-dish .hand { font-size: 1.8rem; color: oklch(88% .1 85); display: block; rotate: -2deg; }
+.feature-dish h3 { font-family: var(--font-display); font-weight: 400; font-size: clamp(2.2rem, 1.6rem + 2vw, 3rem); margin-block: 6px 12px; color: #fff; }
+.feature-dish p, .feature-dish li { color: oklch(97% .02 85 / .9); }
+.feature-dish .check-list .icon { color: oklch(88% .1 85); }
+.feature-dish .price-tag {
+  position: absolute; top: -22px; right: 20px; display: grid; place-items: center; width: 96px; height: 96px; border-radius: 50%;
+  background: oklch(84% .12 85); color: oklch(25% .035 50); font-family: var(--font-display); font-size: 1.9rem; rotate: 10deg;
+  border: 2px solid oklch(25% .035 50); box-shadow: 3px 3px 0 oklch(25% .035 50);
+}
+.feature-dish .price-tag small { display: block; font-family: var(--font-hand); font-size: 1rem; line-height: .6; }
+
+.printed-menu {
+  background: var(--surface); padding: clamp(28px, 4vw, 44px); border: 2px solid var(--ink); border-radius: 2px;
+  outline: 1px solid var(--ink); outline-offset: -10px; box-shadow: var(--shadow-lg);
+}
+.printed-menu__title { text-align: center; font-family: var(--font-display); font-size: 1.6rem; letter-spacing: .2em; text-transform: uppercase; display: flex; align-items: center; gap: 16px; }
+.printed-menu__title::before, .printed-menu__title::after { content: ""; flex: 1; height: 0; border-top: 3px double var(--ink-3); }
+.printed-menu__sub { text-align: center; font-style: italic; color: var(--ink-3); margin: 4px 0 24px; }
+.menu-list { display: grid; gap: 20px; padding: 0; margin: 0; list-style: none; }
+.menu-line { display: flex; align-items: baseline; gap: 10px; }
+.menu-line h3 { font-size: 1.2rem; }
+.menu-line .leader { flex: 1; border-bottom: 3px dotted var(--line-strong); translate: 0 -5px; min-width: 20px; }
+.menu-line .menu-price { font-family: var(--font-display); font-size: 1.2rem; color: var(--brand); }
+.menu-item p { color: var(--ink-2); font-style: italic; font-size: .98rem; margin-top: 2px; }
+.dietary { display: inline-flex; gap: 4px; margin-left: 4px; vertical-align: 2px; }
+.diet { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; font: 700 .6rem/1 var(--font-body); border: 1.5px solid currentColor; }
+.diet--v { color: var(--success); } .diet--vg { color: var(--accent); } .diet--hot { color: var(--brand); }
+.menu-legend { display: flex; flex-wrap: wrap; gap: 6px 18px; justify-content: center; margin-top: 24px; padding-top: 18px; border-top: 1px dashed var(--line-strong); font-size: .85rem; color: var(--ink-3); }
+.menu-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.menu-more { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-top: 48px; }
+@media (max-width: 900px) { .menu-board { grid-template-columns: 1fr; gap: 48px; } }
+
+/* ---- 9. Stats on wood --------------------------------------------------- */
+.stats { background: var(--wood); border: 2px solid oklch(20% .03 50); box-shadow: 8px 8px 0 oklch(25% .035 50 / .25); border-radius: var(--radius); }
+.stats::before { background: radial-gradient(500px 200px at 50% 0%, oklch(70% .12 60 / .2), transparent 70%), var(--tx-grain); opacity: 1; }
+.stat__num { font-weight: 400; letter-spacing: 0; color: oklch(95% .03 85); }
+.stat__label { font-family: var(--font-hand); font-size: 1.45rem; font-weight: 700; color: oklch(84% .1 80); margin-top: 4px; }
+
+/* ---- 10. Story ----------------------------------------------------------- */
+.split__media { border: 2px solid var(--ink); border-radius: var(--radius); box-shadow: 10px 10px 0 var(--brand); }
+.split__badge { border: 2px solid var(--ink); border-radius: var(--radius); box-shadow: 4px 4px 0 var(--ink); }
+.split__badge .fc-big { font-weight: 400; }
+.split .check-list .icon { background: transparent; border: 2px solid var(--brand); }
+.signature { font-family: var(--font-hand); font-size: 2.2rem; font-weight: 700; color: var(--ink-2); rotate: -3deg; display: inline-block; margin: -8px 0 28px; }
+
+/* ---- 11. Steps ----------------------------------------------------------- */
+.section--tint { background: var(--surface-2); }
+.steps::before { background: repeating-linear-gradient(90deg, var(--ink-3) 0 10px, transparent 10px 18px); height: 3px; }
+@media (max-width: 860px) { .steps::before { background: repeating-linear-gradient(180deg, var(--ink-3) 0 10px, transparent 10px 18px); width: 3px; } }
+.step__num { background: var(--brand); color: var(--on-brand); border: 2px solid var(--ink); font-weight: 400; box-shadow: 0 0 0 8px var(--surface-2), 3px 3px 0 8px var(--surface-2) !important; }
+.section--tint .step__num { box-shadow: 0 0 0 8px var(--surface-2); }
+.step:hover .step__num { background: var(--accent); }
+
+/* ---- 12. Reviews as pinned notes ---------------------------------------- */
+.reviews-summary { border: 2px dashed var(--line-strong); border-radius: var(--radius); font-family: var(--font-body); }
+.testimonial { display: inline-block; width: 100%; position: relative; border: 0; border-radius: 2px; box-shadow: 4px 6px 0 oklch(25% .035 50 / .1); background: var(--surface); }
+.testimonial:nth-child(odd) { rotate: -1.2deg; }
+.testimonial:nth-child(even) { rotate: 1deg; }
+.testimonial:hover { transform: translateY(-3px); rotate: 0deg; }
+.testimonial::before { /* masking tape */
+  content: ""; position: absolute; top: -12px; left: 50%; width: 96px; height: 26px; translate: -50% 0; rotate: -3deg;
+  background: oklch(88% .04 85 / .8); box-shadow: 0 1px 2px oklch(0% 0 0 / .1);
+}
+.testimonial blockquote { font-style: italic; }
+.testimonial--highlight { background: var(--surface-2); }
+.testimonial--highlight blockquote { font-family: var(--font-hand); font-style: normal; font-size: 1.9rem; font-weight: 700; line-height: 1.15; }
+
+/* ---- 13. Chalkboard specials -------------------------------------------- */
+.chalkboard {
+  position: relative; padding: clamp(36px, 5vw, 64px) clamp(20px, 4vw, 56px);
+  background: radial-gradient(700px 300px at 20% 10%, oklch(100% 0 0 / .06), transparent 70%), radial-gradient(500px 260px at 85% 90%, oklch(100% 0 0 / .05), transparent 70%), var(--board);
+  border: 16px solid oklch(40% .07 58); border-radius: 6px;
+  box-shadow: inset 0 0 0 2px oklch(0% 0 0 / .35), inset 0 0 60px oklch(0% 0 0 / .5), 10px 12px 0 oklch(25% .035 50 / .25);
+  color: var(--chalk);
+}
+.chalkboard::before { content: ""; position: absolute; inset: 0; background-image: var(--tx-grain); opacity: .25; mix-blend-mode: screen; pointer-events: none; }
+.chalkboard .section-head h2 { font-family: var(--font-hand); font-weight: 700; font-size: clamp(2.8rem, 2rem + 3vw, 4.25rem); color: var(--chalk); }
+.chalkboard .eyebrow { color: oklch(84% .12 85); }
+.chalkboard .lede { color: oklch(95% .01 100 / .75); }
+.chalkboard .plan { background: transparent; border: 2px dashed oklch(100% 0 0 / .35); border-radius: 4px; color: var(--chalk); }
+.chalkboard .plan__name { font-family: var(--font-hand); font-size: 2.1rem; line-height: 1; }
+.chalkboard .plan__desc, .chalkboard .plan__period { color: oklch(95% .01 100 / .7); }
+.chalkboard .plan__amount { font-weight: 400; color: oklch(84% .12 85); }
+.chalkboard .check-list .icon { color: oklch(84% .12 85); }
+.chalkboard .plan--featured { background: oklch(100% 0 0 / .06); border: 2px solid oklch(84% .12 85 / .7); transform: none; box-shadow: none; }
+.chalkboard .plan__badge { font-family: var(--font-hand); font-size: 1.25rem; background: oklch(84% .12 85); color: oklch(25% .035 50); rotate: -4deg; border: 2px solid oklch(25% .035 50); box-shadow: none; }
+.chalkboard .btn { --btn-bg: transparent; --btn-fg: var(--chalk); border-color: var(--chalk); box-shadow: none; }
+.chalkboard .btn:hover { box-shadow: 4px 4px 0 oklch(0% 0 0 / .4); }
+.chalkboard .btn--accent { --btn-bg: oklch(84% .12 85); --btn-fg: oklch(25% .035 50); border-color: oklch(25% .035 50); }
+.chalkboard .guarantee { color: oklch(95% .01 100 / .8); font-family: var(--font-hand); font-size: 1.5rem; }
+.chalkboard .guarantee .icon { color: oklch(84% .12 85); }
+.chalk-doodle { position: absolute; color: oklch(95% .01 100 / .35); pointer-events: none; }
+.chalk-doodle--1 { top: 24px; left: 28px; width: 70px; rotate: -12deg; }
+.chalk-doodle--2 { bottom: 26px; right: 30px; width: 80px; rotate: 14deg; }
+@media (max-width: 760px) { .chalk-doodle { display: none; } }
+
+/* ---- 14. FAQ ----------------------------------------------------------- */
+.accordion details { border: 2px solid var(--line-strong); border-radius: var(--radius); }
+.accordion details[open] { border-color: var(--ink); box-shadow: var(--shadow); }
+.accordion summary { font-family: var(--font-body); font-weight: 700; }
+.faq__help { border: 2px dashed var(--line-strong); border-radius: var(--radius); }
+
+/* ---- 15. Catering (brick wall) + form ---------------------------------- */
+.contact { border: 2px solid var(--ink); border-radius: var(--radius); box-shadow: 10px 10px 0 oklch(25% .035 50 / .2); }
+.contact__pitch { background-color: oklch(45% .15 30); background-image: linear-gradient(170deg, oklch(0% 0 0 / .1), oklch(0% 0 0 / .5)), var(--tx-brick); }
+.contact__pitch::after { display: none; }
+.contact__pitch .eyebrow { color: oklch(88% .1 85); }
+.contact__pitch .check-list .icon { color: oklch(88% .1 85); }
+.contact-methods .icon-wrap { border-radius: 50%; border: 1.5px dashed oklch(100% 0 0 / .5); background: transparent; }
+.contact__form h3 { font-family: var(--font-display); font-weight: 400; font-size: 1.6rem; }
+.input { border: 2px solid var(--line-strong); border-radius: var(--radius-sm); background: var(--bg); font-family: var(--font-body); }
+.input:focus { border-color: var(--ink); box-shadow: 3px 3px 0 var(--brand); }
+.field label { font-family: var(--font-body); }
+
+/* ---- 16. Final CTA (wood) & footer ------------------------------------- */
+.cta-band { background: var(--wood); border: 2px solid oklch(20% .03 50); border-radius: var(--radius); box-shadow: 10px 10px 0 var(--brand); }
+.cta-band::before { background: radial-gradient(600px 220px at 50% 110%, oklch(70% .17 50 / .45), transparent 70%), var(--tx-grain); }
+.cta-band h2 { font-weight: 400; color: oklch(95% .03 85); }
+.cta-band .hand { display: block; font-size: 2rem; color: oklch(84% .12 85); rotate: -3deg; margin-bottom: 4px; }
+.cta-band p { color: oklch(95% .03 85 / .85); }
+
+.footer { background: var(--surface-2); border-top: 0; padding-top: 0; }
+.footer .gingham { margin-bottom: 64px; }
+.footer h2 { font-family: var(--font-hand); font-size: 1.5rem; font-weight: 700; text-transform: none; letter-spacing: 0; color: var(--brand); }
+.socials .icon-btn { border-radius: 50%; border: 2px solid var(--ink); }
+
+.sticky-cta { border: 2px solid var(--ink); border-radius: var(--radius); box-shadow: 4px 4px 0 var(--ink); }
+.sticky-cta .btn { box-shadow: none; }
+
+/* Simple pages */
+.success-ring { background: var(--accent-soft); color: var(--accent); border: 2px dashed var(--accent); }
+
+/* ---- 17. Restaurant helpers --------------------------------------------- */
+.open-status .live-dot { margin-left: 6px; }
+.open-status.is-closed .live-dot { background: var(--danger); animation: none; }
+.hours { display: grid; grid-template-columns: auto 1fr; gap: 6px 20px; margin: 0; }
+.hours dt { font-weight: 700; }
+.hours dd { margin: 0; }
+.contact-methods .hours { color: #fff; font-weight: 500; font-size: .95rem; }
+.pizza-spin { transform-origin: 200px 210px; animation: spin-slow 80s linear infinite; }
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+abbr.diet { text-decoration: none; cursor: help; }

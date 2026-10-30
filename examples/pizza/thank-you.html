@@ -1,27 +1,25 @@
 <!doctype html>
 <html lang="en">
 <!--
-  EXAMPLE: the base template rebranded for a pizzeria.
-  What changed vs. /index.html:
-    • Theme knobs  → custom tomato-red hue + cheese-yellow accent, Fraunces display font (see <style> below)
-    • Copy & CTAs  → "Order online" primary, "Call to order" secondary
-    • Sections     → Services → Menu, Pricing → Specials, Contact form → Catering enquiry
-    • SEO          → LocalBusiness → Restaurant schema (servesCuisine, hasMenu, hours)
-  Shared CSS/JS are loaded from the template root — nothing in assets/ was modified.
+  EXAMPLE: the base template pushed into a rustic pizzeria.
+  Layers:  ../../assets/css/theme.css  → shared tokens
+           ../../assets/css/main.css   → shared layout & components (unchanged)
+           rustic.css                  → "skin": palette, fonts, textures, restyled components
+  Shared JS (../../assets/js/main.js) drives the menu, reveals, counters, form and tracking.
 -->
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-  <title>Thanks — your request is in | Fire &amp; Dough</title>
-  <meta name="description" content="Hand-stretched, wood-fired pizza made with 48-hour dough. Order online for delivery or pickup in Your City — hot to your door in about 35 minutes.">
+  <title>Grazie — your request is in | Fire &amp; Dough</title>
+  <meta name="description" content="Family-run, wood-fired pizza made with 48-hour dough and local ingredients. Order online for delivery or pickup in Your City, or book us to cater your event.">
   <link rel="canonical" href="https://www.example.com/">
   <meta name="robots" content="noindex, follow">
 
   <meta property="og:type" content="restaurant">
   <meta property="og:site_name" content="Fire &amp; Dough">
-  <meta property="og:title" content="Fire &amp; Dough — Wood-Fired Pizza, Hot to Your Door">
-  <meta property="og:description" content="48-hour dough, 900° oven, delivery in about 35 minutes. Order online now.">
+  <meta property="og:title" content="Fire &amp; Dough — Rustic Wood-Fired Pizza">
+  <meta property="og:description" content="48-hour dough, a 900° oak-fired oven and three generations of know-how. Order online now.">
   <meta property="og:url" content="https://www.example.com/">
   <meta property="og:image" content="https://www.example.com/assets/img/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -29,52 +27,18 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <meta name="theme-color" content="#fffaf6" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#1c1210" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f3eadb" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1f1915" media="(prefers-color-scheme: dark)">
 
   <script>try { var t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600..900&family=Figtree:wght@400..800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Caveat:wght@500..700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="../../assets/css/theme.css">
   <link rel="stylesheet" href="../../assets/css/main.css">
-  <style>
-    /* ---- Brand knobs: this is the whole re-skin ---------------------- */
-    :root {
-      --hue: 30;             /* tomato red-orange */
-      --chroma: 0.19;
-      --accent-hue: 88;      /* melted-cheese yellow */
-      --accent-chroma: 0.16;
-      --font-display: "Fraunces", Georgia, serif;
-      --radius-lg: 32px;
-    }
-    h1, h2 { letter-spacing: -0.02em; }
-    h1 { font-weight: 900; }
-
-    /* ---- Small additions for a restaurant ---------------------------- */
-    .menu-card .card__top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
-    .menu-price { font-family: var(--font-display); font-weight: 800; font-size: 1.35rem; color: var(--brand); white-space: nowrap; }
-    .card--feature .menu-price { color: #fff; font-size: 2rem; }
-    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
-    .tag { padding: 3px 10px; border-radius: var(--radius-pill); font-size: .75rem; font-weight: 700; background: var(--surface-2); color: var(--ink-2); }
-    .tag--hot { background: color-mix(in oklch, var(--danger) 14%, transparent); color: var(--danger); }
-    .tag--veg { background: color-mix(in oklch, var(--success) 14%, transparent); color: var(--success); }
-    .card--feature .tag { background: oklch(100% 0 0 / .18); color: #fff; }
-    .menu-more { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 40px; }
-
-    .open-status .live-dot { margin-left: 6px; }
-    .open-status.is-closed .live-dot { background: var(--danger); animation: none; }
-    .hours { display: grid; grid-template-columns: auto 1fr; gap: 6px 20px; margin: 0; }
-    .hours dt { font-weight: 600; }
-    .hours dd { margin: 0; }
-    .contact-methods .hours { color: #fff; font-weight: 500; font-size: .95rem; }
-
-    .hero__photo { background: radial-gradient(circle at 30% 20%, oklch(70% .17 60), oklch(50% .19 30) 70%); }
-    .pizza-spin { transform-origin: 200px 230px; animation: spin-slow 60s linear infinite; }
-    @keyframes spin-slow { to { transform: rotate(360deg); } }
-  </style>
+  <link rel="stylesheet" href="rustic.css">
   <script src="../../assets/js/main.js" defer></script>
 </head>
 <body>
@@ -101,19 +65,20 @@
     <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
     <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
     <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
+    <symbol id="i-doodle-pizza" viewBox="0 0 64 64"><path d="M8 18c15-8 33-8 48 0L32 58z"/><path d="M8 18c15-8 33-8 48 0" stroke-width="4"/><circle cx="26" cy="28" r="4"/><circle cx="38" cy="34" r="4"/><circle cx="31" cy="44" r="3"/></symbol>
+    <symbol id="i-doodle-star" viewBox="0 0 64 64"><path d="M32 6l6 18 19 1-15 12 5 19-15-11-15 11 5-19L7 25l19-1z"/></symbol>
   </svg>
-
   <a class="skip-link" href="./#main">Skip to content</a>
 
   <header class="header">
     <div class="container header__inner">
       <a class="logo" href="./" aria-label="Fire &amp; Dough — home">
         <svg class="logo__mark" viewBox="0 0 40 40" aria-hidden="true">
-          <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--brand)"/><stop offset="1" style="stop-color:var(--accent)"/></linearGradient></defs>
-          <rect width="40" height="40" rx="12" fill="url(#lg)"/>
-          <path d="M11 12.5c6-3.2 12.4-3.2 18 0L20 31z" fill="#ffe3a1"/>
-          <path d="M11 12.5c6-3.2 12.4-3.2 18 0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
-          <circle cx="17.5" cy="17" r="2" fill="#b3261b"/><circle cx="22.5" cy="20.5" r="2" fill="#b3261b"/><circle cx="19.5" cy="25" r="1.6" fill="#b3261b"/>
+          <circle cx="20" cy="20" r="19" fill="var(--brand)" stroke="var(--ink)" stroke-width="2"/>
+          <circle cx="20" cy="20" r="15" fill="none" stroke="#f6ecd9" stroke-width="1" stroke-dasharray="2 2"/>
+          <path d="M12 14c5-2.6 11-2.6 16 0L20 30z" fill="#f6d78a"/>
+          <path d="M12 14c5-2.6 11-2.6 16 0" fill="none" stroke="#f6ecd9" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="18" cy="18" r="1.8" fill="#8c2414"/><circle cx="22.5" cy="21" r="1.8" fill="#8c2414"/><circle cx="19.8" cy="25" r="1.4" fill="#8c2414"/>
         </svg>
         Fire &amp; Dough
       </a>
@@ -121,8 +86,8 @@
       <nav class="nav" id="site-nav" aria-label="Main">
         <ul class="nav__list" role="list">
           <li><a class="nav__link" href="./#menu">Menu</a></li>
-          <li><a class="nav__link" href="./#specials">Specials</a></li>
           <li><a class="nav__link" href="./#about">Our story</a></li>
+          <li><a class="nav__link" href="./#specials">Specials</a></li>
           <li><a class="nav__link" href="./#reviews">Reviews</a></li>
           <li><a class="nav__link" href="./#contact">Catering</a></li>
           <li><a class="nav__link" href="./#faq">FAQ</a></li>
@@ -153,8 +118,8 @@
     <section class="center-page">
       <div class="container container--narrow">
         <div class="success-ring" data-reveal><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>
-        <span class="eyebrow" style="margin-top:28px" data-reveal>Request received</span>
-        <h1 data-reveal style="--i:1">Grazie! <span class="gradient-text">The oven's warming up.</span></h1>
+        <span class="eyebrow" style="margin-top:28px" data-reveal>request received</span>
+        <h1 data-reveal style="--i:1">Grazie! <span class="hl">The oven's warming up.</span></h1>
         <p class="lede" data-reveal style="--i:2">Our catering team will be in touch within a few hours with a quote and menu ideas for your event.</p>
         <div class="hero__ctas" style="margin-top:36px;--i:3" data-reveal>
           <a class="btn btn--primary btn--lg" href="./#menu">Order a pizza while you wait <svg class="icon icon--arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
@@ -165,11 +130,12 @@
   </main>
 
   <footer class="footer">
+    <div class="gingham" aria-hidden="true"></div>
     <div class="container">
       <div class="footer__grid">
         <div class="footer__brand">
           <a class="logo" href="./" aria-label="Fire &amp; Dough — home">
-            <svg class="logo__mark" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="12" fill="url(#lg)"/><path d="M11 12.5c6-3.2 12.4-3.2 18 0L20 31z" fill="#ffe3a1"/><path d="M11 12.5c6-3.2 12.4-3.2 18 0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/><circle cx="17.5" cy="17" r="2" fill="#b3261b"/><circle cx="22.5" cy="20.5" r="2" fill="#b3261b"/><circle cx="19.5" cy="25" r="1.6" fill="#b3261b"/></svg>
+            <svg class="logo__mark" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="var(--brand)" stroke="var(--ink)" stroke-width="2"/><circle cx="20" cy="20" r="15" fill="none" stroke="#f6ecd9" stroke-width="1" stroke-dasharray="2 2"/><path d="M12 14c5-2.6 11-2.6 16 0L20 30z" fill="#f6d78a"/><path d="M12 14c5-2.6 11-2.6 16 0" fill="none" stroke="#f6ecd9" stroke-width="2.5" stroke-linecap="round"/><circle cx="18" cy="18" r="1.8" fill="#8c2414"/><circle cx="22.5" cy="21" r="1.8" fill="#8c2414"/><circle cx="19.8" cy="25" r="1.4" fill="#8c2414"/></svg>
             Fire &amp; Dough
           </a>
           <p>Wood-fired pizza, made with love on Main Street since 2009.</p>
