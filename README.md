@@ -75,6 +75,24 @@ You can also just open `index.html` in a browser.
 
 ---
 
+## Example: pizza restaurant (`examples/pizza/`)
+
+A worked example of the rebrand. It loads the **same** `assets/css` and `assets/js` as the base template, so the whole re-skin happens in the page itself:
+
+| Template piece | Pizza version |
+|---|---|
+| Theme knobs | `--hue: 30` (tomato) · `--accent-hue: 88` (cheese) · Fraunces display font, set in a small `<style>` block |
+| Primary CTA | "Get a free quote" → **"Order online"**, with "Call to order" as the secondary |
+| Hero badge | Live **Open now / Closed** status worked out from the opening hours |
+| Services | → **Menu** with prices and dietary tags |
+| Pricing | → **Specials** (lunch combo, family feast, Tuesday deal) |
+| Quote form | → **Catering enquiry** (date, guest count) and its own thank-you page |
+| Schema | `LocalBusiness` → `Restaurant` (`servesCuisine`, `hasMenu`, hours, `OrderAction`) |
+
+To start a new client from the example, copy the folder, change the knobs in its `<style>` block, and rewrite the copy.
+
+---
+
 ## What's built in
 
 **SEO**

@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<!--
+  EXAMPLE: the base template rebranded for a pizzeria.
+  What changed vs. /index.html:
+    • Theme knobs  → custom tomato-red hue + cheese-yellow accent, Fraunces display font (see <style> below)
+    • Copy & CTAs  → "Order online" primary, "Call to order" secondary
+    • Sections     → Services → Menu, Pricing → Specials, Contact form → Catering enquiry
+    • SEO          → LocalBusiness → Restaurant schema (servesCuisine, hasMenu, hours)
+  Shared CSS/JS are loaded from the template root — nothing in assets/ was modified.
+-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <title>Thanks — your request is in | Fire &amp; Dough</title>
+  <meta name="description" content="Hand-stretched, wood-fired pizza made with 48-hour dough. Order online for delivery or pickup in Your City — hot to your door in about 35 minutes.">
+  <link rel="canonical" href="https://www.example.com/">
+  <meta name="robots" content="noindex, follow">
+
+  <meta property="og:type" content="restaurant">
+  <meta property="og:site_name" content="Fire &amp; Dough">
+  <meta property="og:title" content="Fire &amp; Dough — Wood-Fired Pizza, Hot to Your Door">
+  <meta property="og:description" content="48-hour dough, 900° oven, delivery in about 35 minutes. Order online now.">
+  <meta property="og:url" content="https://www.example.com/">
+  <meta property="og:image" content="https://www.example.com/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#fffaf6" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1c1210" media="(prefers-color-scheme: dark)">
+
+  <script>try { var t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600..900&family=Figtree:wght@400..800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../assets/css/theme.css">
+  <link rel="stylesheet" href="../../assets/css/main.css">
+  <style>
+    /* ---- Brand knobs: this is the whole re-skin ---------------------- */
+    :root {
+      --hue: 30;             /* tomato red-orange */
+      --chroma: 0.19;
+      --accent-hue: 88;      /* melted-cheese yellow */
+      --accent-chroma: 0.16;
+      --font-display: "Fraunces", Georgia, serif;
+      --radius-lg: 32px;
+    }
+    h1, h2 { letter-spacing: -0.02em; }
+    h1 { font-weight: 900; }
+
+    /* ---- Small additions for a restaurant ---------------------------- */
+    .menu-card .card__top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+    .menu-price { font-family: var(--font-display); font-weight: 800; font-size: 1.35rem; color: var(--brand); white-space: nowrap; }
+    .card--feature .menu-price { color: #fff; font-size: 2rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag { padding: 3px 10px; border-radius: var(--radius-pill); font-size: .75rem; font-weight: 700; background: var(--surface-2); color: var(--ink-2); }
+    .tag--hot { background: color-mix(in oklch, var(--danger) 14%, transparent); color: var(--danger); }
+    .tag--veg { background: color-mix(in oklch, var(--success) 14%, transparent); color: var(--success); }
+    .card--feature .tag { background: oklch(100% 0 0 / .18); color: #fff; }
+    .menu-more { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 40px; }
+
+    .open-status .live-dot { margin-left: 6px; }
+    .open-status.is-closed .live-dot { background: var(--danger); animation: none; }
+    .hours { display: grid; grid-template-columns: auto 1fr; gap: 6px 20px; margin: 0; }
+    .hours dt { font-weight: 600; }
+    .hours dd { margin: 0; }
+    .contact-methods .hours { color: #fff; font-weight: 500; font-size: .95rem; }
+
+    .hero__photo { background: radial-gradient(circle at 30% 20%, oklch(70% .17 60), oklch(50% .19 30) 70%); }
+    .pizza-spin { transform-origin: 200px 230px; animation: spin-slow 60s linear infinite; }
+    @keyframes spin-slow { to { transform: rotate(360deg); } }
+  </style>
+  <script src="../../assets/js/main.js" defer></script>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2.5l2.94 5.96 6.56.95-4.75 4.63 1.12 6.54L12 17.5l-5.87 3.08 1.12-6.54L2.5 9.41l6.56-.95z"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14M12 5v14"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+    <symbol id="i-pizza" viewBox="0 0 24 24"><path d="M15 11h.01M11 15h.01M16 16h.01"/><path d="m2 16 20 6-6-20A20 20 0 0 0 2 16"/><path d="M5.71 17.11a17.04 17.04 0 0 1 11.4-11.4"/></symbol>
+    <symbol id="i-flame" viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></symbol>
+    <symbol id="i-bag" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></symbol>
+    <symbol id="i-bike" viewBox="0 0 24 24"><circle cx="18.5" cy="17.5" r="3.5"/><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="15" cy="5" r="1"/><path d="M12 17.5V14l-3-3 4-3 2 3h2"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
+    <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="./#main">Skip to content</a>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a class="logo" href="./" aria-label="Fire &amp; Dough — home">
+        <svg class="logo__mark" viewBox="0 0 40 40" aria-hidden="true">
+          <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--brand)"/><stop offset="1" style="stop-color:var(--accent)"/></linearGradient></defs>
+          <rect width="40" height="40" rx="12" fill="url(#lg)"/>
+          <path d="M11 12.5c6-3.2 12.4-3.2 18 0L20 31z" fill="#ffe3a1"/>
+          <path d="M11 12.5c6-3.2 12.4-3.2 18 0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="17.5" cy="17" r="2" fill="#b3261b"/><circle cx="22.5" cy="20.5" r="2" fill="#b3261b"/><circle cx="19.5" cy="25" r="1.6" fill="#b3261b"/>
+        </svg>
+        Fire &amp; Dough
+      </a>
+
+      <nav class="nav" id="site-nav" aria-label="Main">
+        <ul class="nav__list" role="list">
+          <li><a class="nav__link" href="./#menu">Menu</a></li>
+          <li><a class="nav__link" href="./#specials">Specials</a></li>
+          <li><a class="nav__link" href="./#about">Our story</a></li>
+          <li><a class="nav__link" href="./#reviews">Reviews</a></li>
+          <li><a class="nav__link" href="./#contact">Catering</a></li>
+          <li><a class="nav__link" href="./#faq">FAQ</a></li>
+        </ul>
+        <div class="nav__mobile-cta">
+          <a class="btn btn--primary btn--lg" href="./#menu" data-track="order_nav_mobile">Order online <svg class="icon icon--arrow" aria-hidden="true"><use href="./#i-arrow"/></svg></a>
+          <a class="btn btn--lg" href="tel:+15551234567" data-track="call_nav_mobile"><svg class="icon" aria-hidden="true"><use href="./#i-phone"/></svg> (555) 123-4567</a>
+        </div>
+      </nav>
+
+      <div class="header__actions">
+        <a class="header__phone" href="tel:+15551234567" data-track="call_header"><svg class="icon" aria-hidden="true"><use href="./#i-phone"/></svg><span>(555) 123-4567</span></a>
+        <button class="icon-btn theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+          <svg class="icon icon--sun" aria-hidden="true"><use href="./#i-sun"/></svg>
+          <svg class="icon icon--moon" aria-hidden="true"><use href="./#i-moon"/></svg>
+        </button>
+        <a class="btn btn--primary btn--sm header__cta" href="./#menu" data-track="order_header">Order online</a>
+        <button class="icon-btn menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+          <svg class="icon icon--menu" aria-hidden="true"><use href="./#i-menu"/></svg>
+          <svg class="icon icon--close" aria-hidden="true"><use href="./#i-x"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- CONVERSION PAGE: fire your catering-lead pixel here. -->
+    <section class="center-page">
+      <div class="container container--narrow">
+        <div class="success-ring" data-reveal><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <span class="eyebrow" style="margin-top:28px" data-reveal>Request received</span>
+        <h1 data-reveal style="--i:1">Grazie! <span class="gradient-text">The oven's warming up.</span></h1>
+        <p class="lede" data-reveal style="--i:2">Our catering team will be in touch within a few hours with a quote and menu ideas for your event.</p>
+        <div class="hero__ctas" style="margin-top:36px;--i:3" data-reveal>
+          <a class="btn btn--primary btn--lg" href="./#menu">Order a pizza while you wait <svg class="icon icon--arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn--lg" href="./">Back to home</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a class="logo" href="./" aria-label="Fire &amp; Dough — home">
+            <svg class="logo__mark" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="12" fill="url(#lg)"/><path d="M11 12.5c6-3.2 12.4-3.2 18 0L20 31z" fill="#ffe3a1"/><path d="M11 12.5c6-3.2 12.4-3.2 18 0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/><circle cx="17.5" cy="17" r="2" fill="#b3261b"/><circle cx="22.5" cy="20.5" r="2" fill="#b3261b"/><circle cx="19.5" cy="25" r="1.6" fill="#b3261b"/></svg>
+            Fire &amp; Dough
+          </a>
+          <p>Wood-fired pizza, made with love on Main Street since 2009.</p>
+          <div class="socials">
+            <a class="icon-btn" href="https://www.instagram.com/" aria-label="Instagram" rel="noopener" target="_blank"><svg class="icon" aria-hidden="true"><use href="./#i-instagram"/></svg></a>
+            <a class="icon-btn" href="https://www.facebook.com/" aria-label="Facebook" rel="noopener" target="_blank"><svg class="icon" aria-hidden="true"><use href="./#i-facebook"/></svg></a>
+          </div>
+        </div>
+        <nav aria-labelledby="ft-eat">
+          <h2 id="ft-eat">Eat</h2>
+          <ul><li><a href="./#menu">Menu</a></li><li><a href="./#specials">Specials</a></li><li><a href="./#contact">Catering</a></li><li><a href="./#faq">Allergens &amp; FAQ</a></li></ul>
+        </nav>
+        <div>
+          <h2>Hours</h2>
+          <dl class="hours" style="color:var(--ink-2)"><dt>Mon–Thu</dt><dd>11–10</dd><dt>Fri–Sat</dt><dd>11–11:30</dd><dt>Sun</dt><dd>12–9</dd></dl>
+        </div>
+        <div>
+          <h2>Visit us</h2>
+          <address>
+            <span>Fire &amp; Dough<br>123 Main Street<br>Your City, ST 00000</span>
+            <a href="tel:+15551234567">(555) 123-4567</a>
+          </address>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© <span data-year>2026</span> Fire &amp; Dough. All rights reserved.</p>
+        <ul role="list"><li><a href="../../privacy.html">Privacy</a></li><li><a href="../../">← Back to the base template</a></li></ul>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

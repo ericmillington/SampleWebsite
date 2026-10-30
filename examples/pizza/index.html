@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="en">
+<!--
+  EXAMPLE: the base template rebranded for a pizzeria.
+  What changed vs. /index.html:
+    • Theme knobs  → custom tomato-red hue + cheese-yellow accent, Fraunces display font (see <style> below)
+    • Copy & CTAs  → "Order online" primary, "Call to order" secondary
+    • Sections     → Services → Menu, Pricing → Specials, Contact form → Catering enquiry
+    • SEO          → LocalBusiness → Restaurant schema (servesCuisine, hasMenu, hours)
+  Shared CSS/JS are loaded from the template root — nothing in assets/ was modified.
+-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <title>Fire &amp; Dough — Wood-Fired Pizza Delivery in Your City</title>
+  <meta name="description" content="Hand-stretched, wood-fired pizza made with 48-hour dough. Order online for delivery or pickup in Your City — hot to your door in about 35 minutes.">
+  <link rel="canonical" href="https://www.example.com/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+
+  <meta property="og:type" content="restaurant">
+  <meta property="og:site_name" content="Fire &amp; Dough">
+  <meta property="og:title" content="Fire &amp; Dough — Wood-Fired Pizza, Hot to Your Door">
+  <meta property="og:description" content="48-hour dough, 900° oven, delivery in about 35 minutes. Order online now.">
+  <meta property="og:url" content="https://www.example.com/">
+  <meta property="og:image" content="https://www.example.com/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#fffaf6" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1c1210" media="(prefers-color-scheme: dark)">
+
+  <script>try { var t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600..900&family=Figtree:wght@400..800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../assets/css/theme.css">
+  <link rel="stylesheet" href="../../assets/css/main.css">
+  <style>
+    /* ---- Brand knobs: this is the whole re-skin ---------------------- */
+    :root {
+      --hue: 30;             /* tomato red-orange */
+      --chroma: 0.19;
+      --accent-hue: 88;      /* melted-cheese yellow */
+      --accent-chroma: 0.16;
+      --font-display: "Fraunces", Georgia, serif;
+      --radius-lg: 32px;
+    }
+    h1, h2 { letter-spacing: -0.02em; }
+    h1 { font-weight: 900; }
+
+    /* ---- Small additions for a restaurant ---------------------------- */
+    .menu-card .card__top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+    .menu-price { font-family: var(--font-display); font-weight: 800; font-size: 1.35rem; color: var(--brand); white-space: nowrap; }
+    .card--feature .menu-price { color: #fff; font-size: 2rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag { padding: 3px 10px; border-radius: var(--radius-pill); font-size: .75rem; font-weight: 700; background: var(--surface-2); color: var(--ink-2); }
+    .tag--hot { background: color-mix(in oklch, var(--danger) 14%, transparent); color: var(--danger); }
+    .tag--veg { background: color-mix(in oklch, var(--success) 14%, transparent); color: var(--success); }
+    .card--feature .tag { background: oklch(100% 0 0 / .18); color: #fff; }
+    .menu-more { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 40px; }
+
+    .open-status .live-dot { margin-left: 6px; }
+    .open-status.is-closed .live-dot { background: var(--danger); animation: none; }
+    .hours { display: grid; grid-template-columns: auto 1fr; gap: 6px 20px; margin: 0; }
+    .hours dt { font-weight: 600; }
+    .hours dd { margin: 0; }
+    .contact-methods .hours { color: #fff; font-weight: 500; font-size: .95rem; }
+
+    .hero__photo { background: radial-gradient(circle at 30% 20%, oklch(70% .17 60), oklch(50% .19 30) 70%); }
+    .pizza-spin { transform-origin: 200px 230px; animation: spin-slow 60s linear infinite; }
+    @keyframes spin-slow { to { transform: rotate(360deg); } }
+  </style>
+  <script src="../../assets/js/main.js" defer></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Restaurant",
+        "@id": "https://www.example.com/#restaurant",
+        "name": "Fire & Dough",
+        "description": "Wood-fired Neapolitan-style pizza made with 48-hour fermented dough.",
+        "url": "https://www.example.com/",
+        "image": "https://www.example.com/assets/img/og-image.png",
+        "telephone": "+1-555-123-4567",
+        "servesCuisine": ["Pizza", "Italian"],
+        "priceRange": "$$",
+        "hasMenu": "https://www.example.com/#menu",
+        "acceptsReservations": "False",
+        "address": { "@type": "PostalAddress", "streetAddress": "123 Main Street", "addressLocality": "Your City", "addressRegion": "ST", "postalCode": "00000", "addressCountry": "US" },
+        "openingHoursSpecification": [
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"], "opens": "11:00", "closes": "22:00" },
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday","Saturday"], "opens": "11:00", "closes": "23:30" },
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "12:00", "closes": "21:00" }
+        ],
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "2300" },
+        "potentialAction": { "@type": "OrderAction", "target": "https://www.example.com/order" }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Do you have gluten-free or vegan options?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — any pizza can be made on our gluten-free crust (+$3), and we offer house-made cashew mozzarella for vegan pies." } },
+          { "@type": "Question", "name": "How far do you deliver?", "acceptedAnswer": { "@type": "Answer", "text": "We deliver within 5 miles of the shop. Delivery is free on orders over $25." } },
+          { "@type": "Question", "name": "Do you cater parties and events?", "acceptedAnswer": { "@type": "Answer", "text": "We do — from office lunches to weddings. Use the catering form and we'll reply within a few hours." } },
+          { "@type": "Question", "name": "Can I order ahead for pickup?", "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. Order online, pick a time, and your pizza will be hot and boxed when you arrive." } }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2.5l2.94 5.96 6.56.95-4.75 4.63 1.12 6.54L12 17.5l-5.87 3.08 1.12-6.54L2.5 9.41l6.56-.95z"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14M12 5v14"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+    <symbol id="i-pizza" viewBox="0 0 24 24"><path d="M15 11h.01M11 15h.01M16 16h.01"/><path d="m2 16 20 6-6-20A20 20 0 0 0 2 16"/><path d="M5.71 17.11a17.04 17.04 0 0 1 11.4-11.4"/></symbol>
+    <symbol id="i-flame" viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></symbol>
+    <symbol id="i-bag" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></symbol>
+    <symbol id="i-bike" viewBox="0 0 24 24"><circle cx="18.5" cy="17.5" r="3.5"/><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="15" cy="5" r="1"/><path d="M12 17.5V14l-3-3 4-3 2 3h2"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
+    <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="announce" data-id="tuesday-deal" role="region" aria-label="Announcement">
+    <div class="container">
+      <span class="announce__tag">Tues</span>
+      <p><strong>2 large pizzas for $30</strong> every Tuesday — pickup or delivery. <a href="#specials" data-track="cta_announce">See deal →</a></p>
+      <button class="announce__close" type="button" aria-label="Dismiss announcement"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a class="logo" href="./" aria-label="Fire &amp; Dough — home">
+        <svg class="logo__mark" viewBox="0 0 40 40" aria-hidden="true">
+          <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--brand)"/><stop offset="1" style="stop-color:var(--accent)"/></linearGradient></defs>
+          <rect width="40" height="40" rx="12" fill="url(#lg)"/>
+          <path d="M11 12.5c6-3.2 12.4-3.2 18 0L20 31z" fill="#ffe3a1"/>
+          <path d="M11 12.5c6-3.2 12.4-3.2 18 0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="17.5" cy="17" r="2" fill="#b3261b"/><circle cx="22.5" cy="20.5" r="2" fill="#b3261b"/><circle cx="19.5" cy="25" r="1.6" fill="#b3261b"/>
+        </svg>
+        Fire &amp; Dough
+      </a>
+
+      <nav class="nav" id="site-nav" aria-label="Main">
+        <ul class="nav__list" role="list">
+          <li><a class="nav__link" href="#menu">Menu</a></li>
+          <li><a class="nav__link" href="#specials">Specials</a></li>
+          <li><a class="nav__link" href="#about">Our story</a></li>
+          <li><a class="nav__link" href="#reviews">Reviews</a></li>
+          <li><a class="nav__link" href="#contact">Catering</a></li>
+          <li><a class="nav__link" href="#faq">FAQ</a></li>
+        </ul>
+        <div class="nav__mobile-cta">
+          <a class="btn btn--primary btn--lg" href="#menu" data-track="order_nav_mobile">Order online <svg class="icon icon--arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn--lg" href="tel:+15551234567" data-track="call_nav_mobile"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg> (555) 123-4567</a>
+        </div>
+      </nav>
+
+      <div class="header__actions">
+        <a class="header__phone" href="tel:+15551234567" data-track="call_header"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><span>(555) 123-4567</span></a>
+        <button class="icon-btn theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+          <svg class="icon icon--sun" aria-hidden="true"><use href="#i-sun"/></svg>
+          <svg class="icon icon--moon" aria-hidden="true"><use href="#i-moon"/></svg>
+        </button>
+        <a class="btn btn--primary btn--sm header__cta" href="#menu" data-track="order_header">Order online</a>
+        <button class="icon-btn menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+          <svg class="icon icon--menu" aria-hidden="true"><use href="#i-menu"/></svg>
+          <svg class="icon icon--close" aria-hidden="true"><use href="#i-x"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__bg" aria-hidden="true"><div class="blob blob--1"></div><div class="blob blob--2"></div><div class="blob blob--3"></div></div>
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <a class="pill-badge open-status" href="#visit" data-reveal>
+            <span class="pill-badge__new" data-open-label>Open now</span>
+            <span data-open-text>Delivery in ~35 min</span><span class="live-dot" aria-hidden="true"></span>
+          </a>
+          <h1 id="hero-title" data-reveal style="--i:1">
+            Wood&#8209;fired pizza,
+            <span class="hl"><span class="gradient-text">hot to your door.</span><svg class="hl__underline" viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 15C60 5 160 2 297 9" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></svg></span>
+          </h1>
+          <p class="lede" data-reveal style="--i:2">Hand-stretched dough, fermented for 48 hours and blistered in our 900° oven. Order in under a minute for delivery or pickup.</p>
+
+          <div class="hero__ctas" data-reveal style="--i:3">
+            <a class="btn btn--primary btn--lg" href="#menu" data-track="order_hero">Order online <svg class="icon icon--arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn--lg" href="tel:+15551234567" data-track="call_hero"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg> Call to order</a>
+          </div>
+          <ul class="hero__assurance" data-reveal style="--i:4">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Free delivery over $25</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Pickup ready in 20 min</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Gluten-free &amp; vegan options</li>
+          </ul>
+
+          <div class="social-proof" data-reveal style="--i:5">
+            <div class="avatars" aria-hidden="true">
+              <span class="avatar" style="--h:30">MR</span><span class="avatar" style="--h:200">TJ</span><span class="avatar" style="--h:88">AL</span><span class="avatar" style="--h:150">NK</span>
+            </div>
+            <div class="social-proof__text">
+              <div class="stars" role="img" aria-label="Rated 4.8 out of 5">
+                <svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg>
+              </div>
+              <strong>4.8/5</strong> from 2,300+ hungry locals
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__visual" data-reveal style="--i:2">
+          <div class="hero__photo">
+            <!-- Swap for a real overhead pizza photo: <img src="hero-pizza.webp" alt="…" fetchpriority="high"> -->
+            <svg class="hero__photo-art" viewBox="0 0 400 460" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <circle cx="200" cy="230" r="186" fill="#000" fill-opacity=".12"/>
+              <g class="pizza-spin">
+                <circle cx="200" cy="230" r="160" fill="#e9a650"/>
+                <circle cx="200" cy="230" r="160" fill="none" stroke="#c9822f" stroke-width="5" stroke-dasharray="3 14" stroke-linecap="round"/>
+                <circle cx="200" cy="230" r="136" fill="#c8361d"/>
+                <g fill="#ffe2a0">
+                  <circle cx="160" cy="180" r="38"/><circle cx="240" cy="190" r="34"/><circle cx="205" cy="235" r="44"/>
+                  <circle cx="150" cy="265" r="36"/><circle cx="250" cy="275" r="38"/><circle cx="195" cy="300" r="30"/>
+                  <circle cx="120" cy="215" r="20"/><circle cx="280" cy="230" r="22"/><circle cx="210" cy="155" r="22"/>
+                </g>
+                <g fill="#a3241a">
+                  <circle cx="165" cy="175" r="17"/><circle cx="245" cy="200" r="17"/><circle cx="200" cy="248" r="17"/>
+                  <circle cx="140" cy="262" r="16"/><circle cx="258" cy="282" r="16"/><circle cx="205" cy="320" r="14"/>
+                  <circle cx="290" cy="225" r="13"/><circle cx="118" cy="210" r="12"/><circle cx="210" cy="140" r="13"/>
+                </g>
+                <g fill="#7d160f" fill-opacity=".45">
+                  <circle cx="160" cy="171" r="3"/><circle cx="250" cy="196" r="3"/><circle cx="196" cy="252" r="3"/><circle cx="143" cy="258" r="2.5"/><circle cx="262" cy="278" r="3"/>
+                </g>
+                <g fill="#2f8a3a">
+                  <ellipse cx="190" cy="200" rx="14" ry="7" transform="rotate(-30 190 200)"/>
+                  <ellipse cx="232" cy="248" rx="13" ry="6.5" transform="rotate(40 232 248)"/>
+                  <ellipse cx="170" cy="295" rx="12" ry="6" transform="rotate(10 170 295)"/>
+                  <ellipse cx="268" cy="175" rx="11" ry="5.5" transform="rotate(-60 268 175)"/>
+                  <ellipse cx="130" cy="240" rx="11" ry="5.5" transform="rotate(70 130 240)"/>
+                </g>
+                <g stroke="#7a4a1a" stroke-opacity=".35" stroke-width="2.5">
+                  <path d="M200 70v320M61 150l278 160M61 310l278-160"/>
+                </g>
+              </g>
+            </svg>
+          </div>
+
+          <div class="float-card float-card--rating" aria-hidden="true">
+            <div class="fc-label">Today's special</div>
+            <div class="fc-title" style="margin-top:6px">Hot Honey Pepperoni</div>
+            <div class="fc-row" style="justify-content:space-between;margin-top:8px">
+              <span class="fc-big" style="font-size:1.6rem;color:var(--brand)">$16</span>
+              <span class="tag tag--hot">Spicy</span>
+            </div>
+          </div>
+
+          <div class="float-card float-card--booking" aria-hidden="true">
+            <div class="fc-row" style="justify-content:space-between;margin-bottom:12px">
+              <span class="fc-label">Order #1042</span>
+              <span class="fc-row" style="gap:6px;font-size:.75rem;font-weight:700;color:var(--success)"><span class="live-dot"></span> On the way</span>
+            </div>
+            <div class="fc-row">
+              <span class="icon-chip" style="margin:0;width:42px;height:42px;border-radius:12px"><svg class="icon" style="width:22px;height:22px"><use href="#i-bike"/></svg></span>
+              <div>
+                <div class="fc-title">Arriving in 12 min</div>
+                <div class="fc-sub">2× Margherita · 1× Garlic knots</div>
+              </div>
+            </div>
+            <div class="fc-actions"><span class="fc-btn">Track</span><span class="fc-btn fc-btn--primary">Hot &amp; fresh ✓</span></div>
+          </div>
+
+          <div class="float-card float-card--growth" aria-hidden="true">
+            <div class="fc-row" style="justify-content:space-between">
+              <span class="fc-label">Oven temp</span>
+              <span class="fc-chip">Ready</span>
+            </div>
+            <div class="fc-big" style="margin-top:6px">905°F</div>
+            <div class="fc-sub" style="margin-top:4px">90-second bake · 100% oak</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRESS STRIP -->
+    <section class="trust" aria-label="As featured in">
+      <div class="container">
+        <p class="trust__label">Voted best pizza in Your City — as featured in</p>
+        <div class="marquee">
+          <div class="marquee__track">
+            <span class="wordmark">City Eats</span><span class="wordmark">The Local Gazette</span><span class="wordmark">★ Best of 2026</span><span class="wordmark">Food Weekly</span><span class="wordmark">Slice Report</span><span class="wordmark">Metro Mag</span>
+            <span class="wordmark" aria-hidden="true">City Eats</span><span class="wordmark" aria-hidden="true">The Local Gazette</span><span class="wordmark" aria-hidden="true">★ Best of 2026</span><span class="wordmark" aria-hidden="true">Food Weekly</span><span class="wordmark" aria-hidden="true">Slice Report</span><span class="wordmark" aria-hidden="true">Metro Mag</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENU (was: Services) -->
+    <section class="section" id="menu" aria-labelledby="menu-title">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">The menu</span>
+          <h2 id="menu-title">Pies worth crossing town for.</h2>
+          <p class="lede">Everything is made in-house, every day: dough, sauce, even the hot honey. All 12" pies — make it a 16" for $6.</p>
+        </div>
+
+        <div class="bento">
+          <article class="card card--feature menu-card" data-reveal>
+            <span class="icon-chip"><svg class="icon" aria-hidden="true"><use href="#i-flame"/></svg></span>
+            <div class="tags"><span class="tag">House favorite</span><span class="tag">Since 2009</span></div>
+            <div class="card__top"><h3>The Ember</h3><span class="menu-price">$18</span></div>
+            <p>Our signature: San Marzano tomato, fior di latte, cup-and-char pepperoni, Calabrian chili and a drizzle of hot honey.</p>
+            <ul class="check-list">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> 48-hour fermented dough</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Baked 90 seconds at 900°F</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Our #1 seller three years running</li>
+            </ul>
+            <a class="btn btn--light" href="#menu" data-track="order_feature">Order The Ember <svg class="icon icon--arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </article>
+
+          <article class="card menu-card" data-reveal style="--i:1">
+            <div class="card__top"><h3>Margherita</h3><span class="menu-price">$14</span></div>
+            <div class="tags"><span class="tag tag--veg">Vegetarian</span></div>
+            <p>Tomato, fresh mozzarella, basil, extra-virgin olive oil. The classic, done properly.</p>
+            <a class="link-arrow" href="#menu" data-track="order_item">Add to order <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </article>
+
+          <article class="card menu-card" data-reveal style="--i:2">
+            <div class="card__top"><h3>Diavola</h3><span class="menu-price">$17</span></div>
+            <div class="tags"><span class="tag tag--hot">Spicy</span></div>
+            <p>Spicy salami, chili flakes, smoked mozzarella and oregano.</p>
+            <a class="link-arrow" href="#menu" data-track="order_item">Add to order <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </article>
+
+          <article class="card menu-card" data-reveal style="--i:1">
+            <div class="card__top"><h3>Funghi Bianca</h3><span class="menu-price">$17</span></div>
+            <div class="tags"><span class="tag tag--veg">Vegetarian</span><span class="tag">No sauce</span></div>
+            <p>Roasted mushrooms, ricotta, garlic cream, thyme and truffle oil.</p>
+            <a class="link-arrow" href="#menu" data-track="order_item">Add to order <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </article>
+
+          <article class="card menu-card" data-reveal style="--i:2">
+            <div class="card__top"><h3>Garden Vegan</h3><span class="menu-price">$16</span></div>
+            <div class="tags"><span class="tag tag--veg">Vegan</span></div>
+            <p>Cashew mozzarella, roasted peppers, olives, red onion and arugula.</p>
+            <a class="link-arrow" href="#menu" data-track="order_item">Add to order <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </article>
+
+          <article class="card menu-card" data-reveal style="--i:3">
+            <div class="card__top"><h3>Garlic knots</h3><span class="menu-price">$7</span></div>
+            <div class="tags"><span class="tag">Side</span><span class="tag tag--veg">Vegetarian</span></div>
+            <p>Six knots, garlic butter, parmesan and a pot of house marinara.</p>
+            <a class="link-arrow" href="#menu" data-track="order_item">Add to order <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </article>
+        </div>
+        <div class="menu-more" data-reveal>
+          <a class="btn btn--primary btn--lg" href="#menu" data-track="order_menu">Start your order <svg class="icon icon--arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn--lg" href="#menu" data-track="full_menu">View full menu</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section aria-label="By the numbers">
+      <div class="container">
+        <div class="stats" data-reveal>
+          <div class="stat"><div class="stat__num" data-count="48" data-suffix="hr">48hr</div><div class="stat__label">Dough fermentation</div></div>
+          <div class="stat"><div class="stat__num" data-count="900" data-suffix="°">900°</div><div class="stat__label">Wood-fired oven</div></div>
+          <div class="stat"><div class="stat__num" data-count="35" data-suffix=" min">35 min</div><div class="stat__label">Average delivery</div></div>
+          <div class="stat"><div class="stat__num" data-count="250" data-suffix="k+">250k+</div><div class="stat__label">Pies served</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OUR STORY (was: Why us) -->
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="container split">
+        <div class="split__media" data-reveal style="background:linear-gradient(160deg, oklch(30% .06 40), oklch(18% .03 40))">
+          <svg viewBox="0 0 500 540" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <defs><radialGradient id="fire" cx=".5" cy=".85" r=".6"><stop offset="0" stop-color="#ffd36e"/><stop offset=".45" stop-color="#f27a2a"/><stop offset="1" stop-color="#7a1d10" stop-opacity="0"/></radialGradient></defs>
+            <path d="M70 420V300a180 180 0 0 1 360 0v120z" fill="#5a2f22"/>
+            <g fill="none" stroke="#3e1f16" stroke-width="4">
+              <path d="M70 330h360M70 375h360M95 300a155 155 0 0 1 310 0"/>
+              <path d="M150 185l12 30M250 140v32M350 185l-12 30M110 240l26 18M390 240l-26 18"/>
+            </g>
+            <path d="M150 420v-80a100 100 0 0 1 200 0v80z" fill="#1a0c08"/>
+            <path d="M150 420v-80a100 100 0 0 1 200 0v80z" fill="url(#fire)"/>
+            <path d="M220 420c-10-30 10-45 5-70 20 15 30 35 25 55 10-10 12-25 8-38 18 18 22 38 12 53z" fill="#ffe2a0" opacity=".9"/>
+            <rect x="40" y="420" width="420" height="30" rx="8" fill="#3e1f16"/>
+          </svg>
+          <div class="split__badge">
+            <span class="fc-big">2009</span>
+            <p><strong style="color:var(--ink)">Family-owned</strong><br>on Main Street</p>
+          </div>
+        </div>
+
+        <div data-reveal style="--i:1">
+          <span class="eyebrow">Our story</span>
+          <h2 id="about-title">Three generations, one very hot oven.</h2>
+          <p class="lede">Nonna's dough recipe, a hand-built oak-fired oven, and a simple rule: if we wouldn't serve it to family, it doesn't leave the kitchen.</p>
+          <ul class="check-list">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Local ingredients</strong><span>Produce and dairy from farms within 60 miles.</span></div></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Made fresh, every day</strong><span>Dough, sauce, and mozzarella — never frozen.</span></div></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Hot-or-it's-free promise</strong><span>If your pie arrives lukewarm, the next one's on us.</span></div></li>
+          </ul>
+          <a class="btn btn--primary btn--lg" href="#menu" data-track="order_about">Order now <svg class="icon icon--arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW TO ORDER (was: Process) -->
+    <section class="section section--tint" id="process" aria-labelledby="process-title">
+      <div class="container">
+        <div class="section-head section-head--center" data-reveal>
+          <span class="eyebrow">How it works</span>
+          <h2 id="process-title">From oven to doorstep in 35.</h2>
+        </div>
+        <ol class="steps">
+          <li class="step" data-reveal><span class="step__num" aria-hidden="true"></span><h3>Pick your pies</h3><p>Order online or call — it takes under a minute.</p></li>
+          <li class="step" data-reveal style="--i:1"><span class="step__num" aria-hidden="true"></span><h3>Delivery or pickup</h3><p>Choose ASAP or schedule a time that suits you.</p></li>
+          <li class="step" data-reveal style="--i:2"><span class="step__num" aria-hidden="true"></span><h3>We fire it</h3><p>90 seconds at 900° — fresh, never pre-baked.</p></li>
+          <li class="step" data-reveal style="--i:3"><span class="step__num" aria-hidden="true"></span><h3>Dig in</h3><p>Track your driver live, right to your door.</p></li>
+        </ol>
+        <div class="steps-cta" data-reveal><a class="btn btn--primary btn--lg" href="#menu" data-track="order_process">Order now <svg class="icon icon--arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="section" id="reviews" aria-labelledby="reviews-title">
+      <div class="container">
+        <div class="section-head section-head--center" data-reveal>
+          <span class="eyebrow">Reviews</span>
+          <h2 id="reviews-title">Our regulars say it best.</h2>
+          <div class="reviews-summary">
+            <div class="stars" role="img" aria-label="4.8 out of 5 stars"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></div>
+            4.8 average · 2,300+ reviews
+          </div>
+        </div>
+        <div class="testimonials">
+          <figure class="testimonial testimonial--highlight" data-reveal>
+            <div class="stars" role="img" aria-label="5 out of 5 stars"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></div>
+            <blockquote>“The Ember ruined every other pizza for me. That crust — chewy, charred, perfect. We order every Friday without fail.”</blockquote>
+            <figcaption class="person"><span class="avatar" style="--h:30">MR</span><div><cite class="person__name">Maria R.</cite><div class="person__role">Friday-night regular</div></div></figcaption>
+          </figure>
+          <figure class="testimonial" data-reveal style="--i:1">
+            <div class="stars" role="img" aria-label="5 out of 5 stars"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></div>
+            <blockquote>“Arrived in 25 minutes and still steaming. The garlic knots are dangerous.”</blockquote>
+            <figcaption class="person"><span class="avatar" style="--h:200">TJ</span><div><cite class="person__name">Tom J.</cite><div class="person__role">Delivery customer</div></div></figcaption>
+          </figure>
+          <figure class="testimonial" data-reveal style="--i:2">
+            <div class="stars" role="img" aria-label="5 out of 5 stars"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></div>
+            <blockquote>“Finally, a vegan pizza that doesn't feel like a compromise. The cashew mozz is unreal.”</blockquote>
+            <figcaption class="person"><span class="avatar" style="--h:150">NK</span><div><cite class="person__name">Nina K.</cite><div class="person__role">Plant-based foodie</div></div></figcaption>
+          </figure>
+          <figure class="testimonial" data-reveal style="--i:1">
+            <div class="stars" role="img" aria-label="5 out of 5 stars"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></div>
+            <blockquote>“They catered our office party for 60 people. Everything was on time and the team went back for thirds.”</blockquote>
+            <figcaption class="person"><span class="avatar" style="--h:88">AL</span><div><cite class="person__name">Andre L.</cite><div class="person__role">Office manager</div></div></figcaption>
+          </figure>
+          <figure class="testimonial" data-reveal style="--i:2">
+            <div class="stars" role="img" aria-label="5 out of 5 stars"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></div>
+            <blockquote>“Tuesday 2-for-$30 is the best deal in town. Our kids now call it Pizza Tuesday.”</blockquote>
+            <figcaption class="person"><span class="avatar" style="--h:330">SP</span><div><cite class="person__name">Sarah P.</cite><div class="person__role">Parent of three</div></div></figcaption>
+          </figure>
+          <figure class="testimonial" data-reveal style="--i:3">
+            <div class="stars" role="img" aria-label="5 out of 5 stars"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></div>
+            <blockquote>“Gluten-free crust that actually tastes like pizza. I nearly cried.”</blockquote>
+            <figcaption class="person"><span class="avatar" style="--h:260">DB</span><div><cite class="person__name">Dev B.</cite><div class="person__role">Coeliac &amp; happy</div></div></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPECIALS (was: Pricing) -->
+    <section class="section section--tint" id="specials" aria-labelledby="specials-title">
+      <div class="container">
+        <div class="section-head section-head--center" data-reveal>
+          <span class="eyebrow">Deals</span>
+          <h2 id="specials-title">Specials that hit the spot.</h2>
+          <p class="lede">Feeding one, two, or the whole crew — there's a deal for that.</p>
+        </div>
+        <div class="pricing">
+          <article class="plan" data-reveal>
+            <h3 class="plan__name">Lunch Slice Combo</h3>
+            <p class="plan__desc">Mon–Fri, 11am–3pm. Perfect for a quick bite.</p>
+            <div class="plan__price"><span class="plan__amount">$9</span><span class="plan__period">/ person</span></div>
+            <a class="btn btn--block" href="#menu" data-track="deal_lunch">Order lunch</a>
+            <ul class="check-list">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> 2 slices of the day</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Side salad or knots</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Fountain drink</li>
+            </ul>
+          </article>
+          <article class="plan plan--featured" data-reveal style="--i:1">
+            <span class="plan__badge">★ Best value</span>
+            <h3 class="plan__name">Family Feast</h3>
+            <p class="plan__desc">Feeds 4–5. Friday-night sorted.</p>
+            <div class="plan__price"><span class="plan__amount">$39</span><span class="plan__period">/ bundle</span></div>
+            <a class="btn btn--accent btn--block" href="#menu" data-track="deal_family">Order the Feast <svg class="icon icon--arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <ul class="check-list">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> 2 large pizzas, any toppings</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Garlic knots + Caesar salad</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> 2-litre soda</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Free delivery</li>
+            </ul>
+          </article>
+          <article class="plan" data-reveal style="--i:2">
+            <h3 class="plan__name">Two-for-Tuesday</h3>
+            <p class="plan__desc">Every Tuesday, all day. Pickup or delivery.</p>
+            <div class="plan__price"><span class="plan__amount">$30</span><span class="plan__period">/ 2 large</span></div>
+            <a class="btn btn--block" href="#menu" data-track="deal_tuesday">Claim the deal</a>
+            <ul class="check-list">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Any 2 large signature pies</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Swap to gluten-free (+$3)</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> No code needed</li>
+            </ul>
+          </article>
+        </div>
+        <p class="guarantee" data-reveal><svg class="icon" aria-hidden="true"><use href="#i-flame"/></svg> Hot-or-it's-free promise on every delivery</p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <div class="container faq">
+        <div class="faq__aside" data-reveal>
+          <span class="eyebrow">FAQ</span>
+          <h2 id="faq-title">Good questions, cheesy answers.</h2>
+          <p class="lede">Allergies, big orders, delivery zones — we've got you.</p>
+          <div class="faq__help">
+            <strong>Prefer to talk?</strong>
+            <p>Call the shop — a real human (probably with flour on their hands) will answer.</p>
+            <a class="btn btn--sm" href="tel:+15551234567" data-track="call_faq"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg> (555) 123-4567</a>
+          </div>
+        </div>
+        <div class="accordion" data-reveal style="--i:1">
+          <details name="faq" open>
+            <summary>Do you have gluten-free or vegan options? <svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <div class="accordion__body"><p>Yes — any pizza can be made on our gluten-free crust (+$3), and we offer house-made cashew mozzarella for vegan pies.</p></div>
+          </details>
+          <details name="faq">
+            <summary>How far do you deliver? <svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <div class="accordion__body"><p>We deliver within 5 miles of the shop. Delivery is free on orders over $25.</p></div>
+          </details>
+          <details name="faq">
+            <summary>Do you cater parties and events? <svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <div class="accordion__body"><p>We do — from office lunches to weddings. Use the catering form and we'll reply within a few hours.</p></div>
+          </details>
+          <details name="faq">
+            <summary>Can I order ahead for pickup? <svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <div class="accordion__body"><p>Absolutely. Order online, pick a time, and your pizza will be hot and boxed when you arrive.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATERING (was: Contact / quote form) -->
+    <section class="section" id="contact" aria-labelledby="contact-title" style="padding-top:0">
+      <div class="container">
+        <div class="contact" data-reveal>
+          <div class="contact__pitch" id="visit">
+            <span class="eyebrow">Catering &amp; big orders</span>
+            <h2 id="contact-title">Feeding a crowd? We'll bring the fire.</h2>
+            <p class="lede">Office lunches, birthdays, game nights, weddings. Tell us the headcount and we'll handle the rest.</p>
+            <ul class="check-list">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> 10% off orders of 10+ pizzas</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Mobile wood-fired oven for events</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Plates, napkins &amp; setup included</li>
+            </ul>
+            <ul class="contact-methods">
+              <li><a href="tel:+15551234567" data-track="call_contact"><span class="icon-wrap"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span><span><small>Call the shop</small>(555) 123-4567</span></a></li>
+              <li><a href="https://maps.google.com/?q=123+Main+Street+Your+City" target="_blank" rel="noopener" data-track="directions"><span class="icon-wrap"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg></span><span><small>Get directions</small>123 Main Street, Your City</span></a></li>
+              <li><span class="icon-wrap"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg></span>
+                <dl class="hours"><dt>Mon–Thu</dt><dd>11am – 10pm</dd><dt>Fri–Sat</dt><dd>11am – 11:30pm</dd><dt>Sun</dt><dd>12pm – 9pm</dd></dl>
+              </li>
+            </ul>
+          </div>
+
+          <div class="contact__form">
+            <h3>Request a catering quote</h3>
+            <p>Takes 60 seconds. We reply within a few hours.</p>
+            <form class="form" name="catering" action="#" method="post" data-validate data-success="thank-you.html" novalidate>
+              <div class="field">
+                <label for="f-name">Your name <span class="req" aria-hidden="true">*</span></label>
+                <input class="input" id="f-name" name="name" type="text" autocomplete="name" placeholder="Jane Smith" required aria-describedby="f-name-error">
+                <p class="field__error" id="f-name-error" aria-live="polite"></p>
+              </div>
+              <div class="field">
+                <label for="f-phone">Phone <span class="req" aria-hidden="true">*</span></label>
+                <input class="input" id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(555) 000-0000" required pattern="[0-9 ()+\-.]{7,}" title="Please enter a valid phone number." aria-describedby="f-phone-error">
+                <p class="field__error" id="f-phone-error" aria-live="polite"></p>
+              </div>
+              <div class="field">
+                <label for="f-date">Event date <span class="req" aria-hidden="true">*</span></label>
+                <input class="input" id="f-date" name="date" type="date" required aria-describedby="f-date-error">
+                <p class="field__error" id="f-date-error" aria-live="polite"></p>
+              </div>
+              <div class="field">
+                <label for="f-guests">Guests <span class="req" aria-hidden="true">*</span></label>
+                <select class="input" id="f-guests" name="guests" required aria-describedby="f-guests-error">
+                  <option value="">How many?</option>
+                  <option>10–25</option><option>25–50</option><option>50–100</option><option>100+</option>
+                </select>
+                <p class="field__error" id="f-guests-error" aria-live="polite"></p>
+              </div>
+              <div class="field field--full">
+                <label for="f-email">Email <span class="req" aria-hidden="true">*</span></label>
+                <input class="input" id="f-email" name="email" type="email" autocomplete="email" placeholder="jane@example.com" required aria-describedby="f-email-error">
+                <p class="field__error" id="f-email-error" aria-live="polite"></p>
+              </div>
+              <div class="field field--full">
+                <label for="f-msg">Anything else? <span class="optional">(optional)</span></label>
+                <textarea class="input" id="f-msg" name="message" rows="3" placeholder="Dietary needs, venue, favourite pies…"></textarea>
+              </div>
+              <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="company_website" tabindex="-1" autocomplete="off"></label></div>
+              <p class="form-status form-status--error" role="alert" hidden></p>
+              <div class="field--full" style="display:grid;gap:12px">
+                <button class="btn btn--primary btn--lg btn--block" type="submit">Get my catering quote <svg class="icon icon--arrow" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+                <p class="form__foot"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg> We'll only use your details to plan your order.</p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section aria-labelledby="final-cta-title">
+      <div class="container">
+        <div class="cta-band" data-reveal>
+          <h2 id="final-cta-title">Hungry yet?</h2>
+          <p>Your pizza can be out of the oven in 90 seconds and at your door in about 35 minutes.</p>
+          <div class="hero__ctas">
+            <a class="btn btn--light btn--lg" href="#menu" data-track="order_final">Order online <svg class="icon icon--arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn--outline-light btn--lg" href="tel:+15551234567" data-track="call_final"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg> (555) 123-4567</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a class="logo" href="./" aria-label="Fire &amp; Dough — home">
+            <svg class="logo__mark" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="12" fill="url(#lg)"/><path d="M11 12.5c6-3.2 12.4-3.2 18 0L20 31z" fill="#ffe3a1"/><path d="M11 12.5c6-3.2 12.4-3.2 18 0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/><circle cx="17.5" cy="17" r="2" fill="#b3261b"/><circle cx="22.5" cy="20.5" r="2" fill="#b3261b"/><circle cx="19.5" cy="25" r="1.6" fill="#b3261b"/></svg>
+            Fire &amp; Dough
+          </a>
+          <p>Wood-fired pizza, made with love on Main Street since 2009.</p>
+          <div class="socials">
+            <a class="icon-btn" href="https://www.instagram.com/" aria-label="Instagram" rel="noopener" target="_blank"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+            <a class="icon-btn" href="https://www.facebook.com/" aria-label="Facebook" rel="noopener" target="_blank"><svg class="icon" aria-hidden="true"><use href="#i-facebook"/></svg></a>
+          </div>
+        </div>
+        <nav aria-labelledby="ft-eat">
+          <h2 id="ft-eat">Eat</h2>
+          <ul><li><a href="#menu">Menu</a></li><li><a href="#specials">Specials</a></li><li><a href="#contact">Catering</a></li><li><a href="#faq">Allergens &amp; FAQ</a></li></ul>
+        </nav>
+        <div>
+          <h2>Hours</h2>
+          <dl class="hours" style="color:var(--ink-2)"><dt>Mon–Thu</dt><dd>11–10</dd><dt>Fri–Sat</dt><dd>11–11:30</dd><dt>Sun</dt><dd>12–9</dd></dl>
+        </div>
+        <div>
+          <h2>Visit us</h2>
+          <address>
+            <span>Fire &amp; Dough<br>123 Main Street<br>Your City, ST 00000</span>
+            <a href="tel:+15551234567">(555) 123-4567</a>
+          </address>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© <span data-year>2026</span> Fire &amp; Dough. All rights reserved.</p>
+        <ul role="list"><li><a href="../../privacy.html">Privacy</a></li><li><a href="../../">← Back to the base template</a></li></ul>
+      </div>
+    </div>
+  </footer>
+
+  <div class="sticky-cta" aria-label="Quick order">
+    <a class="btn" href="tel:+15551234567" data-track="call_sticky"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg> Call</a>
+    <a class="btn btn--primary" href="#menu" data-track="order_sticky">Order online <svg class="icon icon--arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+  </div>
+
+  <script>
+    /* "Open now / Closed" badge from the opening hours (local time). */
+    (function () {
+      var hours = { 0: [12, 21], 1: [11, 22], 2: [11, 22], 3: [11, 22], 4: [11, 22], 5: [11, 23.5], 6: [11, 23.5] };
+      var now = new Date(), h = now.getHours() + now.getMinutes() / 60, today = hours[now.getDay()];
+      var open = h >= today[0] && h < today[1];
+      if (open) return;
+      var badge = document.querySelector(".open-status");
+      badge.classList.add("is-closed");
+      badge.querySelector("[data-open-label]").textContent = "Closed";
+      var next = h < today[0] ? today[0] : hours[(now.getDay() + 1) % 7][0];
+      badge.querySelector("[data-open-text]").textContent = "Pre-order now · opens at " + (next > 12 ? next - 12 + "pm" : next + "am");
+    })();
+  </script>
+</body>
+</html>
