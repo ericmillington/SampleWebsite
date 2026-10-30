@@ -1,0 +1,792 @@
+<!doctype html>
+<html lang="en" data-preset="violet" data-demo>
+<!--
+  ╔══════════════════════════════════════════════════════════════════════╗
+  ║  REBRAND CHECKLIST — search this file for "EDIT:" comments.           ║
+  ║  • data-preset  → violet | ocean | ember | forest | rose | mono       ║
+  ║  • data-demo    → remove before launch (hides the palette switcher)   ║
+  ║  • Find & replace: Brightline · example.com · (555) 123-4567          ║
+  ║  See README.md for the full guide.                                    ║
+  ╚══════════════════════════════════════════════════════════════════════╝
+-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <!-- EDIT: Primary SEO — title ≤ 60 chars, description ≤ 155 chars -->
+  <title>Brightline — Expert Service, Done Right the First Time | Your City</title>
+  <meta name="description" content="Brightline delivers fast, friendly, fully-guaranteed service in Your City. Free quotes, upfront pricing, and a 5-star team. Book in under 60 seconds.">
+  <link rel="canonical" href="https://www.example.com/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Brightline">
+
+  <!-- Open Graph / social sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Brightline">
+  <meta property="og:title" content="Brightline — Expert Service, Done Right the First Time">
+  <meta property="og:description" content="Fast, friendly, fully-guaranteed service. Free quotes and upfront pricing. Book in under 60 seconds.">
+  <meta property="og:url" content="https://www.example.com/">
+  <meta property="og:image" content="https://www.example.com/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Brightline — Expert service, done right the first time.">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Brightline — Expert Service, Done Right the First Time">
+  <meta name="twitter:description" content="Fast, friendly, fully-guaranteed service. Free quotes and upfront pricing.">
+  <meta name="twitter:image" content="https://www.example.com/assets/img/og-image.png">
+
+  <!-- Icons & PWA -->
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#fdfcff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#14121c" media="(prefers-color-scheme: dark)">
+
+  <!-- Apply saved theme before first paint (prevents a flash) -->
+  <script>
+    try {
+      var t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t;
+      var p = localStorage.getItem("preset"); if (p && document.documentElement.hasAttribute("data-demo")) document.documentElement.dataset.preset = p;
+    } catch (e) {}
+  </script>
+
+  <!-- Fonts (EDIT: swap families here and in theme.css) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400..800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/theme.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <script src="assets/js/main.js" defer></script>
+
+  <!-- Analytics: paste GA4 / GTM / Plausible here. Clicks on [data-track]
+       elements and form leads are already pushed to window.dataLayer. -->
+
+  <!-- Structured data (EDIT: business details). Validate at search.google.com/test/rich-results -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://www.example.com/#business",
+        "name": "Brightline",
+        "description": "Fast, friendly, fully-guaranteed service with upfront pricing.",
+        "url": "https://www.example.com/",
+        "logo": "https://www.example.com/assets/img/apple-touch-icon.png",
+        "image": "https://www.example.com/assets/img/og-image.png",
+        "telephone": "+1-555-123-4567",
+        "email": "hello@example.com",
+        "priceRange": "$$",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "123 Main Street, Suite 200",
+          "addressLocality": "Your City",
+          "addressRegion": "ST",
+          "postalCode": "00000",
+          "addressCountry": "US"
+        },
+        "geo": { "@type": "GeoCoordinates", "latitude": 0, "longitude": 0 },
+        "areaServed": "Your City and surrounding areas",
+        "openingHoursSpecification": [
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00" },
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "14:00" }
+        ],
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "1200" },
+        "sameAs": ["https://www.instagram.com/", "https://www.facebook.com/", "https://www.linkedin.com/"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.example.com/#website",
+        "url": "https://www.example.com/",
+        "name": "Brightline",
+        "publisher": { "@id": "https://www.example.com/#business" }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "How quickly can you get started?", "acceptedAnswer": { "@type": "Answer", "text": "Most projects start within 2–3 business days. Urgent requests are often handled same-day — call us and we'll do our best to fit you in." } },
+          { "@type": "Question", "name": "Do you offer free quotes?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every quote is free, written, and upfront — no hidden fees and no obligation to book." } },
+          { "@type": "Question", "name": "Are you licensed and insured?", "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. We're fully licensed, bonded and insured, and every team member is background-checked and trained in-house." } },
+          { "@type": "Question", "name": "What if I'm not happy with the result?", "acceptedAnswer": { "@type": "Answer", "text": "Our 100% satisfaction guarantee means we'll come back and make it right at no extra cost — or refund you. Simple as that." } },
+          { "@type": "Question", "name": "What areas do you serve?", "acceptedAnswer": { "@type": "Answer", "text": "We serve Your City and everywhere within roughly 40 miles. Not sure if you're in range? Send us your zip code and we'll confirm." } },
+          { "@type": "Question", "name": "How do I pay?", "acceptedAnswer": { "@type": "Answer", "text": "We accept all major cards, bank transfer and financing on larger projects. You only pay once the job is complete and you're happy." } }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- Icon sprite: <svg class="icon"><use href="#i-name"/></svg> -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2.5l2.94 5.96 6.56.95-4.75 4.63 1.12 6.54L12 17.5l-5.87 3.08 1.12-6.54L2.5 9.41l6.56-.95z"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+    <symbol id="i-zap" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></symbol>
+    <symbol id="i-trend" viewBox="0 0 24 24"><path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14M12 5v14"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+    <symbol id="i-tool" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+    <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3l1.8 5.4a2 2 0 0 0 1.3 1.3L20.5 11.5l-5.4 1.8a2 2 0 0 0-1.3 1.3L12 20l-1.8-5.4a2 2 0 0 0-1.3-1.3L3.5 11.5l5.4-1.8a2 2 0 0 0 1.3-1.3z"/><path d="M19 3v4M17 5h4"/></symbol>
+    <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.48 12.89 17 22l-5-3-5 3 1.52-9.11"/></symbol>
+    <symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 22a10 10 0 1 1 10-10c0 2.5-2 4-4 4h-2a2 2 0 0 0-1.5 3.3A1.6 1.6 0 0 1 12 22Z"/><circle cx="7.5" cy="10.5" r="1.2"/><circle cx="11" cy="6.5" r="1.2"/><circle cx="16" cy="8" r="1.2"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
+    <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- EDIT: Announcement bar — change data-id to re-show it after a visitor dismissed an older message -->
+  <div class="announce" data-id="fall-offer" role="region" aria-label="Announcement">
+    <div class="container">
+      <span class="announce__tag">New</span>
+      <p>Book this month and get <strong>15% off</strong> your first service. <a href="#contact" data-track="cta_announce">Claim offer →</a></p>
+      <button class="announce__close" type="button" aria-label="Dismiss announcement"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a class="logo" href="./" aria-label="Brightline — home">
+        <svg class="logo__mark" viewBox="0 0 40 40" aria-hidden="true">
+          <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--brand)"/><stop offset="1" style="stop-color:var(--accent)"/></linearGradient></defs>
+          <rect width="40" height="40" rx="12" fill="url(#lg)"/>
+          <path d="M20 8l2.6 7.4a2 2 0 0 0 1.2 1.2L31 19.2l-7.2 2.6a2 2 0 0 0-1.2 1.2L20 30.4l-2.6-7.4a2 2 0 0 0-1.2-1.2L9 19.2l7.2-2.6a2 2 0 0 0 1.2-1.2z" fill="#fff"/>
+        </svg>
+        Brightline
+      </a>
+
+      <nav class="nav" id="site-nav" aria-label="Main">
+        <ul class="nav__list" role="list">
+          <li><a class="nav__link" href="#services">Services</a></li>
+          <li><a class="nav__link" href="#about">Why us</a></li>
+          <li><a class="nav__link" href="#process">How it works</a></li>
+          <li><a class="nav__link" href="#reviews">Reviews</a></li>
+          <li><a class="nav__link" href="#pricing">Pricing</a></li>
+          <li><a class="nav__link" href="#faq">FAQ</a></li>
+        </ul>
+        <div class="nav__mobile-cta">
+          <a class="btn btn--primary btn--lg" href="#contact" data-track="cta_nav_mobile">Get a free quote <svg class="icon icon--arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn--lg" href="tel:+15551234567" data-track="call_nav_mobile"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg> (555) 123-4567</a>
+        </div>
+      </nav>
+
+      <div class="header__actions">
+        <a class="header__phone" href="tel:+15551234567" data-track="call_header"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><span>(555) 123-4567</span></a>
+        <button class="icon-btn theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+          <svg class="icon icon--sun" aria-hidden="true"><use href="#i-sun"/></svg>
+          <svg class="icon icon--moon" aria-hidden="true"><use href="#i-moon"/></svg>
+        </button>
+        <a class="btn btn--primary btn--sm header__cta" href="#contact" data-track="cta_header">Get a free quote</a>
+        <button class="icon-btn menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+          <svg class="icon icon--menu" aria-hidden="true"><use href="#i-menu"/></svg>
+          <svg class="icon icon--close" aria-hidden="true"><use href="#i-x"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ================================================================
+         HERO — one H1, one primary action, one secondary action,
+         risk-reducers right under the buttons, social proof below.
+         ================================================================ -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__bg" aria-hidden="true">
+        <div class="blob blob--1"></div><div class="blob blob--2"></div><div class="blob blob--3"></div>
+      </div>
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <a class="pill-badge" href="#reviews" data-reveal>
+            <span class="pill-badge__new">Top rated</span>
+            Voted #1 in Your City, 2026 <svg class="icon" aria-hidden="true" style="width:1em;height:1em"><use href="#i-arrow"/></svg>
+          </a>
+          <!-- EDIT: H1 — say what you do, for whom, and the outcome. Include your main keyword. -->
+          <h1 id="hero-title" data-reveal style="--i:1">
+            Expert service, done right
+            <span class="hl"><span class="gradient-text">the first time.</span><svg class="hl__underline" viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 15C60 5 160 2 297 9" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></svg></span>
+          </h1>
+          <p class="lede" data-reveal style="--i:2">Fast, friendly and fully guaranteed. Get an upfront quote in minutes and a five-star team at your door — without the runaround.</p>
+
+          <div class="hero__ctas" data-reveal style="--i:3">
+            <a class="btn btn--primary btn--lg" href="#contact" data-track="cta_hero_primary">Get my free quote <svg class="icon icon--arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn--lg" href="tel:+15551234567" data-track="call_hero"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg> Call (555) 123-4567</a>
+          </div>
+          <ul class="hero__assurance" data-reveal style="--i:4">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> No obligation</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Reply within 1 hour</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Licensed &amp; insured</li>
+          </ul>
+
+          <div class="social-proof" data-reveal style="--i:5">
+            <div class="avatars" aria-hidden="true">
+              <span class="avatar" style="--h:275">JM</span><span class="avatar" style="--h:200">AR</span><span class="avatar" style="--h:30">KT</span><span class="avatar" style="--h:150">SL</span>
+            </div>
+            <div class="social-proof__text">
+              <div class="stars" role="img" aria-label="Rated 4.9 out of 5">
+                <svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg>
+              </div>
+              <strong>4.9/5</strong> from 1,200+ happy customers
+            </div>
+          </div>
+        </div>
+
+        <!-- Visual: swap .hero__photo-art for <img src="…" alt="…" width="…" height="…" fetchpriority="high"> -->
+        <div class="hero__visual" data-reveal style="--i:2">
+          <div class="hero__photo">
+            <svg class="hero__photo-art" viewBox="0 0 400 460" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <circle cx="320" cy="90" r="150" fill="#fff" fill-opacity=".10"/>
+              <circle cx="320" cy="90" r="95" fill="#fff" fill-opacity=".10"/>
+              <circle cx="320" cy="90" r="42" fill="#fff" fill-opacity=".22"/>
+              <path d="M0 330 C 90 280, 170 380, 260 320 S 400 290, 400 290 V460 H0Z" fill="#fff" fill-opacity=".10"/>
+              <path d="M0 380 C 110 340, 190 420, 290 370 S 400 360, 400 360 V460 H0Z" fill="#fff" fill-opacity=".12"/>
+              <g fill="#fff" fill-opacity=".35">
+                <circle cx="60" cy="70" r="2.5"/><circle cx="84" cy="70" r="2.5"/><circle cx="108" cy="70" r="2.5"/><circle cx="132" cy="70" r="2.5"/>
+                <circle cx="60" cy="94" r="2.5"/><circle cx="84" cy="94" r="2.5"/><circle cx="108" cy="94" r="2.5"/><circle cx="132" cy="94" r="2.5"/>
+                <circle cx="60" cy="118" r="2.5"/><circle cx="84" cy="118" r="2.5"/><circle cx="108" cy="118" r="2.5"/><circle cx="132" cy="118" r="2.5"/>
+              </g>
+            </svg>
+          </div>
+
+          <div class="float-card float-card--rating" aria-hidden="true">
+            <div class="fc-row" style="justify-content:space-between">
+              <span class="fc-big">4.9</span>
+              <div class="stars"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></div>
+            </div>
+            <div class="fc-bars">
+              <div class="fc-bar"><span>5</span><span style="--w:92%"></span></div>
+              <div class="fc-bar"><span>4</span><span style="--w:6%"></span></div>
+              <div class="fc-bar"><span>3</span><span style="--w:2%"></span></div>
+            </div>
+          </div>
+
+          <div class="float-card float-card--booking" aria-hidden="true">
+            <div class="fc-row" style="justify-content:space-between;margin-bottom:12px">
+              <span class="fc-label">New booking</span>
+              <span class="fc-row" style="gap:6px;font-size:.75rem;font-weight:700;color:var(--success)"><span class="live-dot"></span> Live</span>
+            </div>
+            <div class="fc-row">
+              <span class="avatar" style="--h:200;margin:0;border:0">AR</span>
+              <div>
+                <div class="fc-title">Alex R. — Full service</div>
+                <div class="fc-sub">Tomorrow · 9:00 AM</div>
+              </div>
+            </div>
+            <div class="fc-actions"><span class="fc-btn">Reschedule</span><span class="fc-btn fc-btn--primary">Confirmed ✓</span></div>
+          </div>
+
+          <div class="float-card float-card--growth" aria-hidden="true">
+            <div class="fc-row" style="justify-content:space-between">
+              <span class="fc-label">Jobs this month</span>
+              <span class="fc-chip">↑ 38%</span>
+            </div>
+            <div class="fc-big" style="margin-top:6px">248</div>
+            <svg class="fc-spark" viewBox="0 0 200 44" preserveAspectRatio="none">
+              <defs><linearGradient id="spark" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity=".3"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs>
+              <path d="M0 38 L25 32 L50 34 L75 24 L100 27 L125 16 L150 19 L175 8 L200 4 V44 H0Z" fill="url(#spark)"/>
+              <path d="M0 38 L25 32 L50 34 L75 24 L100 27 L125 16 L150 19 L175 8 L200 4" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         TRUST / AS SEEN IN — swap wordmarks for real client or press logos
+         ================================================================ -->
+    <section class="trust" aria-label="Trusted by">
+      <div class="container">
+        <p class="trust__label">Trusted by homeowners, local businesses and teams at</p>
+        <div class="marquee">
+          <div class="marquee__track">
+            <span class="wordmark"><svg viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="12" fill="currentColor"/></svg>Northpeak</span>
+            <span class="wordmark"><svg viewBox="0 0 28 28" aria-hidden="true"><rect x="3" y="3" width="22" height="22" rx="6" fill="currentColor"/></svg>Cobalt&amp;Co</span>
+            <span class="wordmark"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M14 2 26 24H2z" fill="currentColor"/></svg>Summit</span>
+            <span class="wordmark"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M2 14a12 12 0 0 1 24 0z" fill="currentColor"/><path d="M2 18h24v4H2z" fill="currentColor"/></svg>Harborline</span>
+            <span class="wordmark"><svg viewBox="0 0 28 28" aria-hidden="true"><circle cx="9" cy="14" r="7" fill="currentColor"/><circle cx="19" cy="14" r="7" fill="currentColor" opacity=".55"/></svg>Lumen</span>
+            <span class="wordmark"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M4 4h8v20H4zM16 4h8v8h-8z" fill="currentColor"/></svg>Fieldstone</span>
+            <!-- duplicate set for seamless loop -->
+            <span class="wordmark" aria-hidden="true"><svg viewBox="0 0 28 28"><circle cx="14" cy="14" r="12" fill="currentColor"/></svg>Northpeak</span>
+            <span class="wordmark" aria-hidden="true"><svg viewBox="0 0 28 28"><rect x="3" y="3" width="22" height="22" rx="6" fill="currentColor"/></svg>Cobalt&amp;Co</span>
+            <span class="wordmark" aria-hidden="true"><svg viewBox="0 0 28 28"><path d="M14 2 26 24H2z" fill="currentColor"/></svg>Summit</span>
+            <span class="wordmark" aria-hidden="true"><svg viewBox="0 0 28 28"><path d="M2 14a12 12 0 0 1 24 0z" fill="currentColor"/><path d="M2 18h24v4H2z" fill="currentColor"/></svg>Harborline</span>
+            <span class="wordmark" aria-hidden="true"><svg viewBox="0 0 28 28"><circle cx="9" cy="14" r="7" fill="currentColor"/><circle cx="19" cy="14" r="7" fill="currentColor" opacity=".55"/></svg>Lumen</span>
+            <span class="wordmark" aria-hidden="true"><svg viewBox="0 0 28 28"><path d="M4 4h8v20H4zM16 4h8v8h-8z" fill="currentColor"/></svg>Fieldstone</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SERVICES — benefit-led headings, each card ends in a CTA
+         ================================================================ -->
+    <section class="section" id="services" aria-labelledby="services-title">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">What we do</span>
+          <h2 id="services-title">Everything you need, handled by one team you can trust.</h2>
+          <p class="lede">From first consultation to long-term care, we make the whole process simple, transparent and — dare we say — enjoyable.</p>
+        </div>
+
+        <div class="bento">
+          <article class="card card--feature" data-reveal>
+            <span class="icon-chip"><svg class="icon" aria-hidden="true"><use href="#i-sparkle"/></svg></span>
+            <h3>Signature full-service package</h3>
+            <p>Our most popular option. We plan it, do it, and stand behind it — so you can get back to your life.</p>
+            <ul class="check-list">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Free on-site consultation &amp; written quote</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Dedicated project lead from start to finish</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> 12-month workmanship guarantee</li>
+            </ul>
+            <a class="btn btn--light" href="#contact" data-track="cta_service_feature">Book a consultation <svg class="icon icon--arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </article>
+
+          <article class="card" data-reveal style="--i:1">
+            <span class="icon-chip"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg></span>
+            <h3>Consultation &amp; planning</h3>
+            <p>A clear plan, honest advice and a fixed price before any work begins.</p>
+            <a class="link-arrow" href="#contact">Get started <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </article>
+
+          <article class="card" data-reveal style="--i:2">
+            <span class="icon-chip"><svg class="icon" aria-hidden="true"><use href="#i-zap"/></svg></span>
+            <h3>Same-day &amp; emergency</h3>
+            <p>Something urgent? Call before noon and we'll aim to be there today.</p>
+            <a class="link-arrow" href="tel:+15551234567" data-track="call_service_card">Call now <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </article>
+
+          <article class="card" data-reveal style="--i:1">
+            <span class="icon-chip"><svg class="icon" aria-hidden="true"><use href="#i-tool"/></svg></span>
+            <h3>Installation &amp; upgrades</h3>
+            <p>Quality materials, tidy work, and a walkthrough when we're done.</p>
+            <a class="link-arrow" href="#contact">Request a quote <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </article>
+
+          <article class="card" data-reveal style="--i:2">
+            <span class="icon-chip"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg></span>
+            <h3>Maintenance plans</h3>
+            <p>Scheduled check-ins that prevent problems — and save you money.</p>
+            <a class="link-arrow" href="#pricing">See plans <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </article>
+
+          <article class="card" data-reveal style="--i:3">
+            <span class="icon-chip"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg></span>
+            <h3>Ongoing support</h3>
+            <p>Real humans on the phone, plus text updates at every step.</p>
+            <a class="link-arrow" href="#contact">Talk to us <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         STATS — concrete numbers beat adjectives
+         ================================================================ -->
+    <section aria-label="By the numbers">
+      <div class="container">
+        <div class="stats" data-reveal>
+          <div class="stat"><div class="stat__num" data-count="12" data-suffix="+">12+</div><div class="stat__label">Years in business</div></div>
+          <div class="stat"><div class="stat__num" data-count="4800" data-suffix="+">4,800+</div><div class="stat__label">Projects completed</div></div>
+          <div class="stat"><div class="stat__num" data-count="4.9">4.9</div><div class="stat__label">Average rating</div></div>
+          <div class="stat"><div class="stat__num" data-count="98" data-suffix="%">98%</div><div class="stat__label">Would recommend us</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         WHY US — differentiators + objection handling
+         ================================================================ -->
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="container split">
+        <div class="split__media" data-reveal>
+          <!-- Swap for: <img src="assets/img/team.webp" alt="Our team on site" width="800" height="864" loading="lazy" decoding="async"> -->
+          <svg viewBox="0 0 500 540" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <circle cx="250" cy="250" r="210" fill="#fff" fill-opacity=".08"/>
+            <circle cx="250" cy="250" r="150" fill="#fff" fill-opacity=".08"/>
+            <circle cx="250" cy="250" r="90" fill="#fff" fill-opacity=".12"/>
+            <path d="M250 196l10 30a8 8 0 0 0 5 5l30 10-30 10a8 8 0 0 0-5 5l-10 30-10-30a8 8 0 0 0-5-5l-30-10 30-10a8 8 0 0 0 5-5z" fill="#fff"/>
+            <circle cx="110" cy="110" r="14" fill="#fff" fill-opacity=".4"/>
+            <circle cx="400" cy="400" r="22" fill="#fff" fill-opacity=".25"/>
+            <rect x="380" y="90" width="40" height="40" rx="12" fill="#fff" fill-opacity=".2" transform="rotate(18 400 110)"/>
+          </svg>
+          <div class="split__badge">
+            <span class="fc-big">12</span>
+            <p><strong style="color:var(--ink)">Years of five-star</strong><br>service in Your City</p>
+          </div>
+        </div>
+
+        <div data-reveal style="--i:1">
+          <span class="eyebrow">Why Brightline</span>
+          <h2 id="about-title">The local team that actually shows up.</h2>
+          <p class="lede">We started Brightline because getting good help shouldn't feel like a gamble. Today we're a team of 30+ pros with one promise: we treat your project like it's our own.</p>
+          <ul class="check-list">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><div><strong>Upfront, fixed pricing</strong><span>The quote is the price. No surprise add-ons, ever.</span></div></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><div><strong>On time, or it's on us</strong><span>We arrive in the window we promise — or your visit fee is waived.</span></div></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><div><strong>100% satisfaction guarantee</strong><span>Not thrilled? We'll make it right or refund you.</span></div></li>
+          </ul>
+          <a class="btn btn--primary btn--lg" href="#contact" data-track="cta_about">Get my free quote <svg class="icon icon--arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         PROCESS — reduce perceived effort
+         ================================================================ -->
+    <section class="section section--tint" id="process" aria-labelledby="process-title">
+      <div class="container">
+        <div class="section-head section-head--center" data-reveal>
+          <span class="eyebrow">How it works</span>
+          <h2 id="process-title">Four simple steps. Zero headaches.</h2>
+          <p class="lede">Most customers go from first message to finished job in under a week.</p>
+        </div>
+        <ol class="steps">
+          <li class="step" data-reveal><span class="step__num" aria-hidden="true"></span><h3>Tell us what you need</h3><p>Fill out the 60-second form or give us a call.</p></li>
+          <li class="step" data-reveal style="--i:1"><span class="step__num" aria-hidden="true"></span><h3>Get a clear quote</h3><p>A written, fixed price — usually within the hour.</p></li>
+          <li class="step" data-reveal style="--i:2"><span class="step__num" aria-hidden="true"></span><h3>We do the work</h3><p>On time, on budget, with updates at every step.</p></li>
+          <li class="step" data-reveal style="--i:3"><span class="step__num" aria-hidden="true"></span><h3>Enjoy the result</h3><p>Backed by our 12-month satisfaction guarantee.</p></li>
+        </ol>
+        <div class="steps-cta" data-reveal><a class="btn btn--primary btn--lg" href="#contact" data-track="cta_process">Start step one <svg class="icon icon--arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         REVIEWS — specific, attributed, with outcomes
+         ================================================================ -->
+    <section class="section" id="reviews" aria-labelledby="reviews-title">
+      <div class="container">
+        <div class="section-head section-head--center" data-reveal>
+          <span class="eyebrow">Reviews</span>
+          <h2 id="reviews-title">Don't take our word for it.</h2>
+          <div class="reviews-summary">
+            <div class="stars" role="img" aria-label="4.9 out of 5 stars"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></div>
+            4.9 average · 1,200+ verified reviews
+          </div>
+        </div>
+
+        <div class="testimonials">
+          <figure class="testimonial testimonial--highlight" data-reveal>
+            <div class="stars" role="img" aria-label="5 out of 5 stars"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></div>
+            <blockquote>“Honestly the easiest experience I've had hiring anyone. Quote in an hour, done in two days, and they left the place cleaner than they found it.”</blockquote>
+            <figcaption class="person"><span class="avatar" style="--h:275">JM</span><div><cite class="person__name">Jordan M.</cite><div class="person__role">Homeowner · Eastside</div></div></figcaption>
+          </figure>
+          <figure class="testimonial" data-reveal style="--i:1">
+            <div class="stars" role="img" aria-label="5 out of 5 stars"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></div>
+            <blockquote>“They came out same-day on a Saturday. Fair price, no upsell. We've already booked them for our second location.”</blockquote>
+            <figcaption class="person"><span class="avatar" style="--h:30">KT</span><div><cite class="person__name">Kim T.</cite><div class="person__role">Owner, Harbor Café</div></div></figcaption>
+          </figure>
+          <figure class="testimonial" data-reveal style="--i:2">
+            <div class="stars" role="img" aria-label="5 out of 5 stars"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></div>
+            <blockquote>“Clear communication from start to finish. I got text updates at every stage and never had to chase anyone.”</blockquote>
+            <figcaption class="person"><span class="avatar" style="--h:150">SL</span><div><cite class="person__name">Sam L.</cite><div class="person__role">Property manager</div></div></figcaption>
+          </figure>
+          <figure class="testimonial" data-reveal style="--i:1">
+            <div class="stars" role="img" aria-label="5 out of 5 stars"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></div>
+            <blockquote>“The maintenance plan has paid for itself twice over. Wish we'd found them years ago.”</blockquote>
+            <figcaption class="person"><span class="avatar" style="--h:200">AR</span><div><cite class="person__name">Alex R.</cite><div class="person__role">Homeowner · Westbrook</div></div></figcaption>
+          </figure>
+          <figure class="testimonial" data-reveal style="--i:2">
+            <div class="stars" role="img" aria-label="5 out of 5 stars"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></div>
+            <blockquote>“Professional, punctual, and genuinely nice people. Five stars isn't enough.”</blockquote>
+            <figcaption class="person"><span class="avatar" style="--h:330">PD</span><div><cite class="person__name">Priya D.</cite><div class="person__role">Small business owner</div></div></figcaption>
+          </figure>
+          <figure class="testimonial" data-reveal style="--i:3">
+            <div class="stars" role="img" aria-label="5 out of 5 stars"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></div>
+            <blockquote>“They explained every option without any pressure. We picked the mid-tier and it was perfect.”</blockquote>
+            <figcaption class="person"><span class="avatar" style="--h:100">MB</span><div><cite class="person__name">Marcus B.</cite><div class="person__role">Homeowner · Northgate</div></div></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         PRICING (optional — delete the whole <section> if not needed)
+         Anchor high, highlight the middle, reverse the risk.
+         ================================================================ -->
+    <section class="section section--tint" id="pricing" aria-labelledby="pricing-title">
+      <div class="container">
+        <div class="section-head section-head--center" data-reveal>
+          <span class="eyebrow">Pricing</span>
+          <h2 id="pricing-title">Simple plans. No surprises.</h2>
+          <p class="lede">Pick a plan or ask for a custom quote — either way, the price we give you is the price you pay.</p>
+          <div class="billing-toggle" role="group" aria-label="Billing period">
+            <button type="button" data-billing="monthly" aria-pressed="true">Monthly</button>
+            <button type="button" data-billing="annual" aria-pressed="false">Yearly <span class="save-tag">Save 20%</span></button>
+          </div>
+        </div>
+
+        <div class="pricing">
+          <article class="plan" data-reveal>
+            <h3 class="plan__name">Essential</h3>
+            <p class="plan__desc">The basics, done brilliantly. Great for occasional needs.</p>
+            <div class="plan__price"><span class="plan__amount">$<span data-monthly="49" data-annual="39">49</span></span><span class="plan__period">/ month</span></div>
+            <a class="btn btn--block" href="#contact" data-track="cta_plan_essential">Choose Essential</a>
+            <ul class="check-list">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> 1 scheduled visit per quarter</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Priority booking</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> 10% off any extra work</li>
+            </ul>
+          </article>
+
+          <article class="plan plan--featured" data-reveal style="--i:1">
+            <span class="plan__badge">★ Most popular</span>
+            <h3 class="plan__name">Complete</h3>
+            <p class="plan__desc">Everything most customers need, with room to grow.</p>
+            <div class="plan__price"><span class="plan__amount">$<span data-monthly="99" data-annual="79">99</span></span><span class="plan__period">/ month</span></div>
+            <a class="btn btn--accent btn--block" href="#contact" data-track="cta_plan_complete">Choose Complete <svg class="icon icon--arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <ul class="check-list">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Monthly scheduled visits</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Same-day emergency response</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> 20% off any extra work</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Dedicated account manager</li>
+            </ul>
+          </article>
+
+          <article class="plan" data-reveal style="--i:2">
+            <h3 class="plan__name">Premium</h3>
+            <p class="plan__desc">White-glove service for larger homes and businesses.</p>
+            <div class="plan__price"><span class="plan__amount">$<span data-monthly="199" data-annual="159">199</span></span><span class="plan__period">/ month</span></div>
+            <a class="btn btn--block" href="#contact" data-track="cta_plan_premium">Choose Premium</a>
+            <ul class="check-list">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Unlimited scheduled visits</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> 24/7 emergency hotline</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> All parts &amp; labor included</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Annual strategy review</li>
+            </ul>
+          </article>
+        </div>
+        <p class="guarantee" data-reveal><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg> 30-day money-back guarantee · Cancel anytime · No setup fees</p>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         FAQ — answer objections; mirrors the FAQPage JSON-LD in <head>
+         ================================================================ -->
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <div class="container faq">
+        <div class="faq__aside" data-reveal>
+          <span class="eyebrow">FAQ</span>
+          <h2 id="faq-title">Questions? We've got answers.</h2>
+          <p class="lede">Everything you need to know before booking. Can't find what you're looking for?</p>
+          <div class="faq__help">
+            <strong>Talk to a real person</strong>
+            <p>Our team answers the phone Mon–Sat. No phone trees, promise.</p>
+            <a class="btn btn--sm" href="tel:+15551234567" data-track="call_faq"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg> (555) 123-4567</a>
+          </div>
+        </div>
+
+        <div class="accordion" data-reveal style="--i:1">
+          <details name="faq" open>
+            <summary>How quickly can you get started? <svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <div class="accordion__body"><p>Most projects start within 2–3 business days. Urgent requests are often handled same-day — call us and we'll do our best to fit you in.</p></div>
+          </details>
+          <details name="faq">
+            <summary>Do you offer free quotes? <svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <div class="accordion__body"><p>Yes. Every quote is free, written, and upfront — no hidden fees and no obligation to book.</p></div>
+          </details>
+          <details name="faq">
+            <summary>Are you licensed and insured? <svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <div class="accordion__body"><p>Absolutely. We're fully licensed, bonded and insured, and every team member is background-checked and trained in-house.</p></div>
+          </details>
+          <details name="faq">
+            <summary>What if I'm not happy with the result? <svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <div class="accordion__body"><p>Our 100% satisfaction guarantee means we'll come back and make it right at no extra cost — or refund you. Simple as that.</p></div>
+          </details>
+          <details name="faq">
+            <summary>What areas do you serve? <svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <div class="accordion__body"><p>We serve Your City and everywhere within roughly 40 miles. Not sure if you're in range? Send us your zip code and we'll confirm.</p></div>
+          </details>
+          <details name="faq">
+            <summary>How do I pay? <svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary>
+            <div class="accordion__body"><p>We accept all major cards, bank transfer and financing on larger projects. You only pay once the job is complete and you're happy.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         CONTACT — short form (fewer fields = more leads), alt channels,
+         clear expectations about what happens next.
+         ================================================================ -->
+    <section class="section" id="contact" aria-labelledby="contact-title" style="padding-top:0">
+      <div class="container">
+        <div class="contact" data-reveal>
+          <div class="contact__pitch">
+            <span class="eyebrow">Free quote</span>
+            <h2 id="contact-title">Let's get your project on the calendar.</h2>
+            <p class="lede">Tell us a little about what you need. We'll reply with a clear, fixed-price quote — usually within the hour.</p>
+            <ul class="check-list">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> No obligation, no pressure</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> 15% off your first service this month</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Backed by our satisfaction guarantee</li>
+            </ul>
+            <ul class="contact-methods">
+              <li><a href="tel:+15551234567" data-track="call_contact"><span class="icon-wrap"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span><span><small>Call or text</small>(555) 123-4567</span></a></li>
+              <li><a href="mailto:hello@example.com" data-track="email_contact"><span class="icon-wrap"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></span><span><small>Email</small>hello@example.com</span></a></li>
+              <li><span class="icon-wrap"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg></span><span><small>Hours</small>Mon–Fri 8–6 · Sat 9–2</span></li>
+            </ul>
+          </div>
+
+          <div class="contact__form">
+            <h3>Request your free quote</h3>
+            <p>Takes about 60 seconds.</p>
+            <!-- EDIT: set action to your form endpoint (Formspree, Basin, Netlify, CRM webhook). "#" = demo mode. -->
+            <form class="form" name="quote" action="#" method="post" data-validate data-success="thank-you.html" novalidate>
+              <div class="field">
+                <label for="f-name">Full name <span class="req" aria-hidden="true">*</span></label>
+                <input class="input" id="f-name" name="name" type="text" autocomplete="name" placeholder="Jane Smith" required aria-describedby="f-name-error">
+                <p class="field__error" id="f-name-error" aria-live="polite"></p>
+              </div>
+              <div class="field">
+                <label for="f-phone">Phone <span class="optional">(optional)</span></label>
+                <input class="input" id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(555) 000-0000" pattern="[0-9 ()+\-.]{7,}" title="Please enter a valid phone number." aria-describedby="f-phone-error">
+                <p class="field__error" id="f-phone-error" aria-live="polite"></p>
+              </div>
+              <div class="field field--full">
+                <label for="f-email">Email <span class="req" aria-hidden="true">*</span></label>
+                <input class="input" id="f-email" name="email" type="email" autocomplete="email" placeholder="jane@example.com" required aria-describedby="f-email-error">
+                <p class="field__error" id="f-email-error" aria-live="polite"></p>
+              </div>
+              <div class="field field--full">
+                <label for="f-service">What do you need help with? <span class="req" aria-hidden="true">*</span></label>
+                <select class="input" id="f-service" name="service" required aria-describedby="f-service-error">
+                  <option value="">Choose a service…</option>
+                  <option>Full-service package</option>
+                  <option>Consultation &amp; planning</option>
+                  <option>Same-day / emergency</option>
+                  <option>Installation &amp; upgrades</option>
+                  <option>Maintenance plan</option>
+                  <option>Something else</option>
+                </select>
+                <p class="field__error" id="f-service-error" aria-live="polite"></p>
+              </div>
+              <div class="field field--full">
+                <label for="f-msg">Tell us a bit more <span class="optional">(optional)</span></label>
+                <textarea class="input" id="f-msg" name="message" rows="4" placeholder="Timeline, location, anything we should know…"></textarea>
+              </div>
+              <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="company_website" tabindex="-1" autocomplete="off"></label></div>
+              <div class="field--full">
+                <label class="consent"><input type="checkbox" id="f-consent" name="consent" required aria-describedby="f-consent-error"> <span>I agree to be contacted about my request. See our <a href="privacy.html">privacy policy</a>.</span></label>
+                <p class="field__error" id="f-consent-error" aria-live="polite"></p>
+              </div>
+              <p class="form-status form-status--error" role="alert" hidden></p>
+              <div class="field--full" style="display:grid;gap:12px">
+                <button class="btn btn--primary btn--lg btn--block" type="submit">Get my free quote <svg class="icon icon--arrow" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+                <p class="form__foot"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg> Your info is safe with us. We never share or sell it.</p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         FINAL CTA — last nudge before the footer
+         ================================================================ -->
+    <section aria-labelledby="final-cta-title">
+      <div class="container">
+        <div class="cta-band" data-reveal>
+          <h2 id="final-cta-title">Ready when you are.</h2>
+          <p>Join 1,200+ happy customers. Get your free, no-pressure quote today and see why Your City calls us first.</p>
+          <div class="hero__ctas">
+            <a class="btn btn--light btn--lg" href="#contact" data-track="cta_final">Get my free quote <svg class="icon icon--arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn--outline-light btn--lg" href="tel:+15551234567" data-track="call_final"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg> (555) 123-4567</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a class="logo" href="./" aria-label="Brightline — home">
+            <svg class="logo__mark" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="12" fill="url(#lg)"/><path d="M20 8l2.6 7.4a2 2 0 0 0 1.2 1.2L31 19.2l-7.2 2.6a2 2 0 0 0-1.2 1.2L20 30.4l-2.6-7.4a2 2 0 0 0-1.2-1.2L9 19.2l7.2-2.6a2 2 0 0 0 1.2-1.2z" fill="#fff"/></svg>
+            Brightline
+          </a>
+          <p>Expert service, done right the first time. Proudly serving Your City since 2014.</p>
+          <div class="socials">
+            <a class="icon-btn" href="https://www.instagram.com/" aria-label="Instagram" rel="noopener" target="_blank"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+            <a class="icon-btn" href="https://www.facebook.com/" aria-label="Facebook" rel="noopener" target="_blank"><svg class="icon" aria-hidden="true"><use href="#i-facebook"/></svg></a>
+            <a class="icon-btn" href="https://www.linkedin.com/" aria-label="LinkedIn" rel="noopener" target="_blank"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg></a>
+          </div>
+        </div>
+        <nav aria-labelledby="ft-company">
+          <h2 id="ft-company">Company</h2>
+          <ul>
+            <li><a href="#about">About us</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="ft-services">
+          <h2 id="ft-services">Services</h2>
+          <ul>
+            <li><a href="#services">Full-service package</a></li>
+            <li><a href="#services">Consultation</a></li>
+            <li><a href="#services">Emergency service</a></li>
+            <li><a href="#services">Maintenance plans</a></li>
+          </ul>
+        </nav>
+        <div>
+          <h2>Visit us</h2>
+          <!-- NAP (name, address, phone) — keep identical to your Google Business Profile -->
+          <address>
+            <span>Brightline<br>123 Main Street, Suite 200<br>Your City, ST 00000</span>
+            <a href="tel:+15551234567">(555) 123-4567</a>
+            <a href="mailto:hello@example.com">hello@example.com</a>
+          </address>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© <span data-year>2026</span> Brightline. All rights reserved.</p>
+        <ul role="list">
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="privacy.html#terms">Terms</a></li>
+          <li><a href="sitemap.xml">Sitemap</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile sticky CTA (thumb-zone, appears after the hero) -->
+  <div class="sticky-cta" aria-label="Quick contact">
+    <a class="btn" href="tel:+15551234567" data-track="call_sticky"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg> Call</a>
+    <a class="btn btn--primary" href="#contact" data-track="cta_sticky">Free quote <svg class="icon icon--arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+  </div>
+
+  <!-- Demo palette switcher — only visible while <html data-demo> is set -->
+  <div class="demo-switcher">
+    <div class="demo-switcher__panel" id="demo-panel" hidden>
+      <p>Try a preset</p>
+      <div class="swatches">
+        <button class="swatch" type="button" data-preset="violet" style="--h:275;--c:.19;--a:28"><i></i>Violet</button>
+        <button class="swatch" type="button" data-preset="ocean" style="--h:235;--c:.15;--a:175"><i></i>Ocean</button>
+        <button class="swatch" type="button" data-preset="ember" style="--h:38;--c:.17;--a:355"><i></i>Ember</button>
+        <button class="swatch" type="button" data-preset="forest" style="--h:158;--c:.12;--a:85"><i></i>Forest</button>
+        <button class="swatch" type="button" data-preset="rose" style="--h:355;--c:.16;--a:300"><i></i>Rose</button>
+        <button class="swatch" type="button" data-preset="mono" style="--h:260;--c:.025;--a:45"><i></i>Mono</button>
+      </div>
+    </div>
+    <button class="demo-switcher__btn" type="button" aria-label="Change color preset" aria-expanded="false" aria-controls="demo-panel"><svg class="icon" aria-hidden="true"><use href="#i-palette"/></svg></button>
+  </div>
+</body>
+</html>

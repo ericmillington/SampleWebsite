@@ -1,0 +1,135 @@
+/* ==========================================================================
+   THEME — the only file you *need* to touch when re-skinning for a new client.
+   --------------------------------------------------------------------------
+   Colors are generated from a few numbers using OKLCH, so changing --hue
+   re-tints the entire site (buttons, gradients, dark mode, focus rings…).
+
+   Quick start:
+     1. Pick a preset below by setting  <html data-preset="ocean">
+        (presets: violet · ocean · ember · forest · rose · mono)
+     2. …or edit the :root numbers directly for a fully custom brand.
+   ========================================================================== */
+
+:root {
+  /* ---- Brand knobs ------------------------------------------------------ */
+  --hue: 275;            /* primary brand hue, 0–360                         */
+  --chroma: 0.19;        /* primary saturation, 0 (gray) – 0.25 (vivid)      */
+  --accent-hue: 28;      /* secondary/accent hue (badges, highlights)        */
+  --accent-chroma: 0.17;
+
+  /* ---- Typography ------------------------------------------------------- */
+  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Figtree", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* ---- Shape ------------------------------------------------------------ */
+  --radius-sm: 10px;
+  --radius: 18px;
+  --radius-lg: 28px;
+  --radius-pill: 999px;
+
+  /* ---- Layout ----------------------------------------------------------- */
+  --container: 1200px;
+  --gutter: clamp(16px, 4vw, 32px);
+  --section: clamp(72px, 10vw, 128px);
+  --header-h: 72px;
+
+  /* ---- Derived palette (light) — usually no need to edit --------------- */
+  --brand: oklch(54% var(--chroma) var(--hue));
+  --brand-strong: oklch(44% var(--chroma) var(--hue));
+  --brand-soft: oklch(95.5% calc(var(--chroma) * 0.22) var(--hue));
+  --brand-softer: oklch(97.8% calc(var(--chroma) * 0.1) var(--hue));
+  --on-brand: #fff;
+  --accent: oklch(72% var(--accent-chroma) var(--accent-hue));
+  --accent-strong: oklch(60% var(--accent-chroma) var(--accent-hue));
+  --accent-soft: oklch(95% calc(var(--accent-chroma) * 0.3) var(--accent-hue));
+  --on-accent: oklch(20% 0.04 var(--accent-hue));
+
+  --bg: oklch(99.2% 0.004 var(--hue));
+  --surface: #fff;
+  --surface-2: oklch(97.2% 0.008 var(--hue));
+  --ink: oklch(21% 0.03 var(--hue));
+  --ink-2: oklch(43% 0.025 var(--hue));
+  --ink-3: oklch(58% 0.02 var(--hue));
+  --line: oklch(91.5% 0.012 var(--hue));
+  --line-strong: oklch(84% 0.015 var(--hue));
+  --star: oklch(78% 0.16 75);
+  --success: oklch(58% 0.14 155);
+  --danger: oklch(56% 0.19 25);
+
+  --shadow-sm: 0 1px 2px oklch(20% 0.04 var(--hue) / 0.06), 0 1px 1px oklch(20% 0.04 var(--hue) / 0.04);
+  --shadow: 0 2px 4px oklch(20% 0.04 var(--hue) / 0.04), 0 12px 32px -8px oklch(20% 0.06 var(--hue) / 0.12);
+  --shadow-lg: 0 4px 8px oklch(20% 0.04 var(--hue) / 0.04), 0 32px 64px -16px oklch(20% 0.08 var(--hue) / 0.22);
+  --shadow-brand: 0 8px 24px -6px oklch(54% var(--chroma) var(--hue) / 0.5);
+
+  --gradient-brand: linear-gradient(135deg, oklch(56% var(--chroma) var(--hue)), oklch(62% var(--chroma) calc(var(--hue) + 40)));
+  --gradient-text: linear-gradient(100deg, oklch(52% var(--chroma) var(--hue)) 10%, oklch(66% var(--accent-chroma) var(--accent-hue)) 90%);
+
+  color-scheme: light;
+}
+
+/* ---- Dark palette ------------------------------------------------------- */
+/* Defined twice: once for OS preference, once for the manual toggle. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --brand: oklch(72% calc(var(--chroma) * 0.85) var(--hue));
+    --brand-strong: oklch(80% calc(var(--chroma) * 0.75) var(--hue));
+    --brand-soft: oklch(30% calc(var(--chroma) * 0.4) var(--hue));
+    --brand-softer: oklch(23% calc(var(--chroma) * 0.25) var(--hue));
+    --on-brand: oklch(18% 0.04 var(--hue));
+    --accent-soft: oklch(32% calc(var(--accent-chroma) * 0.4) var(--accent-hue));
+    --bg: oklch(16.5% 0.02 var(--hue));
+    --surface: oklch(20.5% 0.024 var(--hue));
+    --surface-2: oklch(24% 0.026 var(--hue));
+    --ink: oklch(96.5% 0.008 var(--hue));
+    --ink-2: oklch(78% 0.018 var(--hue));
+    --ink-3: oklch(64% 0.02 var(--hue));
+    --line: oklch(30% 0.022 var(--hue));
+    --line-strong: oklch(38% 0.024 var(--hue));
+    --shadow: 0 2px 4px oklch(0% 0 0 / 0.2), 0 12px 32px -8px oklch(0% 0 0 / 0.45);
+    --shadow-lg: 0 4px 8px oklch(0% 0 0 / 0.2), 0 32px 64px -16px oklch(0% 0 0 / 0.6);
+    --shadow-brand: 0 8px 28px -6px oklch(65% var(--chroma) var(--hue) / 0.45);
+    --gradient-text: linear-gradient(100deg, oklch(76% var(--chroma) var(--hue)) 10%, oklch(78% var(--accent-chroma) var(--accent-hue)) 90%);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --brand: oklch(72% calc(var(--chroma) * 0.85) var(--hue));
+  --brand-strong: oklch(80% calc(var(--chroma) * 0.75) var(--hue));
+  --brand-soft: oklch(30% calc(var(--chroma) * 0.4) var(--hue));
+  --brand-softer: oklch(23% calc(var(--chroma) * 0.25) var(--hue));
+  --on-brand: oklch(18% 0.04 var(--hue));
+  --accent-soft: oklch(32% calc(var(--accent-chroma) * 0.4) var(--accent-hue));
+  --bg: oklch(16.5% 0.02 var(--hue));
+  --surface: oklch(20.5% 0.024 var(--hue));
+  --surface-2: oklch(24% 0.026 var(--hue));
+  --ink: oklch(96.5% 0.008 var(--hue));
+  --ink-2: oklch(78% 0.018 var(--hue));
+  --ink-3: oklch(64% 0.02 var(--hue));
+  --line: oklch(30% 0.022 var(--hue));
+  --line-strong: oklch(38% 0.024 var(--hue));
+  --shadow: 0 2px 4px oklch(0% 0 0 / 0.2), 0 12px 32px -8px oklch(0% 0 0 / 0.45);
+  --shadow-lg: 0 4px 8px oklch(0% 0 0 / 0.2), 0 32px 64px -16px oklch(0% 0 0 / 0.6);
+  --shadow-brand: 0 8px 28px -6px oklch(65% var(--chroma) var(--hue) / 0.45);
+  --gradient-text: linear-gradient(100deg, oklch(76% var(--chroma) var(--hue)) 10%, oklch(78% var(--accent-chroma) var(--accent-hue)) 90%);
+  color-scheme: dark;
+}
+
+/* ---- Presets ------------------------------------------------------------
+   Set on <html data-preset="…">. Each is just a handful of knobs.
+   Suggested fits:
+     violet — agencies, tech, creative, coaching
+     ocean  — marine, health, cleaning, pools, finance
+     ember  — trades, roofing, restaurants, fitness
+     forest — landscaping, wellness, real estate, eco
+     rose   — beauty, salons, wedding, boutique retail
+     mono   — law, architecture, luxury, consulting
+   ------------------------------------------------------------------------ */
+[data-preset="violet"] { --hue: 275; --chroma: 0.19; --accent-hue: 28; }
+[data-preset="ocean"]  { --hue: 235; --chroma: 0.15; --accent-hue: 175; --accent-chroma: 0.13; }
+[data-preset="ember"]  { --hue: 38;  --chroma: 0.17; --accent-hue: 355; --accent-chroma: 0.18; }
+[data-preset="forest"] { --hue: 158; --chroma: 0.12; --accent-hue: 85; --accent-chroma: 0.15; }
+[data-preset="rose"]   { --hue: 355; --chroma: 0.16; --accent-hue: 300; --accent-chroma: 0.14; }
+[data-preset="mono"]   { --hue: 260; --chroma: 0.025; --accent-hue: 45; --accent-chroma: 0.15;
+                         --radius: 8px; --radius-lg: 14px; --radius-sm: 6px;
+                         --brand: oklch(24% 0.02 260); --brand-strong: oklch(12% 0.02 260);
+                         --gradient-brand: linear-gradient(135deg, oklch(22% 0.02 260), oklch(36% 0.03 260)); }

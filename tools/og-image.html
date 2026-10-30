@@ -1,0 +1,35 @@
+<!doctype html>
+<!-- Social share image template (1200×630). Edit text/colors, then run:
+     node tools/build-images.js   → writes assets/img/og-image.png + icons -->
+<html lang="en" data-preset="violet">
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/theme.css">
+<style>
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; }
+  body { font-family: var(--font-body); background: var(--gradient-brand); color: #fff; position: relative; }
+  .ring { position: absolute; border-radius: 50%; background: #fff; }
+  .wrap { position: absolute; inset: 72px 80px; display: flex; flex-direction: column; }
+  .logo { display: flex; align-items: center; gap: 16px; font-family: var(--font-display); font-weight: 800; font-size: 40px; letter-spacing: -.03em; }
+  .logo svg { width: 60px; height: 60px; }
+  h1 { font-family: var(--font-display); font-size: 92px; line-height: 1; letter-spacing: -.04em; margin: auto 0 24px; max-width: 900px; }
+  h1 span { color: oklch(88% .1 var(--accent-hue)); }
+  p { font-size: 32px; margin: 0; opacity: .9; }
+  .chip { display: inline-flex; gap: 10px; align-items: center; padding: 12px 24px; border-radius: 99px; background: #fff; color: oklch(25% .05 var(--hue)); font-weight: 800; font-size: 26px; position: absolute; right: 0; top: 0; }
+</style>
+</head>
+<body>
+  <div class="ring" style="width:620px;height:620px;right:-160px;bottom:-260px;opacity:.08"></div>
+  <div class="ring" style="width:400px;height:400px;right:-50px;bottom:-150px;opacity:.08"></div>
+  <div class="wrap">
+    <div class="logo">
+      <svg viewBox="0 0 40 40"><rect width="40" height="40" rx="12" fill="#fff" fill-opacity=".2"/><path d="M20 8l2.6 7.4a2 2 0 0 0 1.2 1.2L31 19.2l-7.2 2.6a2 2 0 0 0-1.2 1.2L20 30.4l-2.6-7.4a2 2 0 0 0-1.2-1.2L9 19.2l7.2-2.6a2 2 0 0 0 1.2-1.2z" fill="#fff"/></svg>
+      Brightline
+    </div>
+    <span class="chip">★ 4.9 · 1,200+ reviews</span>
+    <h1>Expert service, done right <span>the first time.</span></h1>
+    <p>Free quotes · Upfront pricing · Satisfaction guaranteed</p>
+  </div>
+</body>
+</html>

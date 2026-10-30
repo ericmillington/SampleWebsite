@@ -1,0 +1,7 @@
+# EDIT: replace example.com with your domain
+User-agent: *
+Allow: /
+Disallow: /thank-you.html
+Disallow: /tools/
+
+Sitemap: https://www.example.com/sitemap.xml
