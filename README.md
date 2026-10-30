@@ -97,7 +97,7 @@ You can also just open `index.html` in a browser.
 **Accessibility and performance**
 - Skip link, visible focus rings, ARIA on the menu, toggles and form errors, and `prefers-reduced-motion` support
 - Light and dark modes that follow the OS, with a manual toggle and no flash on load
-- Zero dependencies: about 40 KB of CSS and JS before compression, fonts loaded with `display=swap`, and an inline SVG icon sprite
+- Zero dependencies: about 15 KB of CSS and JS gzipped, fonts loaded with `display=swap`, and an inline SVG icon sprite
 - Works without JavaScript (all content is visible, and FAQ uses native `<details>`)
 - `_headers` sets security and caching headers on Netlify and Cloudflare Pages
 
