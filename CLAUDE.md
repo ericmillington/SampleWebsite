@@ -24,6 +24,9 @@ templates/editorial/   Template 2, "Halfmoon Coffee": standalone editorial/photo
   editorial.css        own tokens + layout (does NOT load assets/css); knobs: --accent-hue, --warm
   editorial.js         product rail, bag counter, subscription picker (plus shared ../../assets/js/main.js)
   img/                 placeholder JPGs; PHOTOS.md = shot list (file names, sizes, subjects)
+templates/sketch/      Eric's own hand-drawn site mockup turned into a working page
+  source.jpg           the original drawing (2048×2121); header/intro/work/footer.jpg are slices of it
+  index.html           real links/inputs/submit button absolutely positioned (in % of each slice) over the drawn boxes
 robots.txt, sitemap.xml, site.webmanifest, _headers (Netlify/Cloudflare security + caching)
 ```
 
@@ -38,6 +41,7 @@ robots.txt, sitemap.xml, site.webmanifest, _headers (Netlify/Cloudflare security
 - **Placeholders to find and replace:** `Brightline`, `example.com`, `(555) 123-4567` / `+15551234567`, `hello@example.com`, `Your City`, `123 Main Street`.
 - **Editorial template design rules (Eric asked for this):** it must not "look like an AI site". So no centered eyebrow + heading + lede stacks, no rows of three equal cards, no gradient blobs, no checkmark lists everywhere. Break the column grid (bleeds, overlaps, offsets, oversized type), and lean on real photography for personality, not SVG illustrations.
 - **Editorial form hooks:** `main.js` expects `#contact` and `form[data-validate]`. In the editorial template, `#contact` sits on the wholesale grid.
+- **Sketch template rule (Eric asked for this):** it must look exactly like his drawing. Don't make design decisions or redraw anything. Interactive elements are invisible overlays on the drawn boxes. If the drawing changes, re-slice it and re-measure the hotspot rectangles (Python/PIL on source.jpg).
 - Don't put model names in commits or code. Commit as Eric (`emillington@gmail.com`).
 
 ## How to verify changes
@@ -51,6 +55,7 @@ There's no test suite. Check visually with Playwright, which is pre-installed in
 ## History
 
 - **2026-10-30:** Built the base template; added a pizza example (color/font knob swap only); then restyled it with `rustic.css` (Alfa Slab One / Lora / Caveat, parchment/brick/olive palette, paper/brick/wood/gingham textures, chalkboard specials, printed menu with price leaders, order receipt, stamp, taped review notes). All pushed to `main`.
+- **2026-10-31:** Built `templates/sketch/` from Eric's hand-drawn mockup: sliced the image into 4 sections, and overlaid real inputs, links and a Go! button on the drawn boxes. The demo submit shows "Thanks! Talk soon." The whole drawing scales down proportionally on phones (tiny there; a stacked mobile version was offered, not built).
 - **2026-10-31:** Built Template 2 (`templates/editorial/`, Halfmoon Coffee) with placeholder photos, because photo hosts are blocked. Tested at desktop, mobile and dark; rail, bag counter, subscription picker, form → thank-you and JSON-LD all pass.
 - **2026-10-31:** Discussed building sites from JPG/PNG mockups. The plan, if Eric uploads one: build it as another `examples/<name>/` with its own skin, compare screenshots against the mockup, and ask for original photos, logo and font names.
 
