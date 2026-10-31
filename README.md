@@ -119,7 +119,7 @@ A second, standalone template with a completely different design language. It's 
 
 ## Template 3: Sketch (`templates/sketch/`)
 
-A hand-drawn mockup turned straight into a working page. The drawing (`source.jpg`) is sliced into header, intro, form and footer images. Real links, form inputs and the submit button sit invisibly on top of the drawn boxes and buttons, so the page looks exactly like the sketch but works. Positions are percentages of each slice, so they stay aligned at any width. The form is in demo mode (`action="#"`): point it at a form service to receive messages.
+A hand-drawn mockup turned straight into a working page. The drawing (`source.jpg`) is cut into pieces along its pen strokes (`p-*.jpg`). On desktop every piece sits exactly where it was drawn; on phones the same pieces stack vertically at a readable size. Real links, form inputs and the submit button sit invisibly on top of the drawn boxes and buttons, so the page looks exactly like the sketch but works. Positions are percentages of each slice, so they stay aligned at any width. The form is in demo mode (`action="#"`): point it at a form service to receive messages.
 
 ---
 

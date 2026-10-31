@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="en">
 <!--
-  SKETCH TEMPLATE: Eric's hand-drawn mockup, sliced into images.
-  Each <section> is one slice of source.jpg (header / intro / work / footer).
-  Real links, inputs and the submit button sit on top of the drawn boxes, positioned
-  in % of each slice so they stay aligned at any screen width.
+  SKETCH TEMPLATE: Eric's hand-drawn mockup (source.jpg) cut into pieces along its pen strokes (p-*.jpg).
+  Desktop: every piece is placed at its exact original position, so the page matches the drawing.
+  Phones (≤ 720px): the same pieces stack vertically at a readable size.
+  Real links, inputs and the Go! button sit on top of the drawn boxes, positioned in % of their piece.
 -->
 <head>
   <meta charset="utf-8">
@@ -31,74 +31,90 @@
     *, *::before, *::after { box-sizing: border-box; }
     html, body { margin: 0; background: #000; }
     body { color: #fff; font-family: "Architects Daughter", "Comic Sans MS", cursive; }
-    .sheet { width: min(100%, 1100px); margin: 0 auto; container-type: inline-size; }
-    .slice { position: relative; display: block; }
-    .slice > img { display: block; width: 100%; height: auto; }
-    .hot { position: absolute; display: block; }
     .sr-only { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-    /* Links and buttons drawn in the sketch: invisible hit areas over the drawing */
-    a.hot, button.hot { color: transparent; background: transparent; border: 0; padding: 0; cursor: pointer; border-radius: 1.2cqw; transition: box-shadow .2s, background-color .2s; }
-    a.hot:hover, button.hot:hover { background: rgb(120 220 120 / .08); box-shadow: 0 0 2.4cqw rgb(120 220 120 / .35); }
-    a.hot:focus-visible, button.hot:focus-visible { outline: 0.25cqw dashed #9fe59f; outline-offset: 0.4cqw; }
+    /* Desktop: pieces placed exactly where they are in the drawing */
+    .sheet { position: relative; width: min(100%, 1100px); margin: 0 auto; aspect-ratio: 2048 / 2121; container-type: inline-size; }
+    .piece { position: absolute; display: block; }
+    .piece > img { display: block; width: 100%; height: auto; mix-blend-mode: lighten; }  /* black never hides another piece */
+    header, main, footer, nav, form { display: contents; }
 
-    /* Inputs sit inside the drawn boxes: no box of their own, handwriting-style text */
+    .hot { position: absolute; display: block; }
+    a.hot, button.hot { color: transparent; background: transparent; border: 0; padding: 0; cursor: pointer; border-radius: 8px; transition: box-shadow .2s, background-color .2s; }
+    a.hot:hover, button.hot:hover { background: rgb(120 220 120 / .08); box-shadow: 0 0 22px rgb(120 220 120 / .35); }
+    a.hot:focus-visible, button.hot:focus-visible { outline: 2px dashed #9fe59f; outline-offset: 4px; }
     .hot input {
-      width: 100%; height: 100%; border: 0; margin: 0; padding: 0 1.4cqw;
-      background: transparent; color: #fff; caret-color: #9fe59f;
+      width: 100%; height: 100%; border: 0; margin: 0; padding: 0 4%;
+      background: transparent; color: #fff; caret-color: #9fe59f; border-radius: 8px;
       font: 2.3cqw/1 "Architects Daughter", "Comic Sans MS", cursive; text-transform: uppercase; letter-spacing: .05em;
-      border-radius: 1cqw; transition: background-color .2s;
+      transition: background-color .2s;
     }
     .hot input:focus { outline: none; background: rgb(120 220 120 / .1); }
     .hot input:user-invalid { background: rgb(255 90 90 / .14); }
+    .thanks { margin: 0; color: #9fe59f; text-transform: uppercase; letter-spacing: .08em; font-size: 2.4cqw; line-height: 1; text-align: center; white-space: nowrap; }
 
-    .thanks { font-size: 2.4cqw; line-height: 1; text-transform: uppercase; letter-spacing: .08em; color: #9fe59f; text-align: center; margin: 0; }
+    /* Phones: same drawn pieces, stacked */
+    @media (max-width: 720px) {
+      .sheet { aspect-ratio: auto; width: 100%; padding: 16px 16px 40px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; row-gap: 28px; }
+      .piece { position: relative; left: auto !important; top: auto !important; }
+      .p-logo { width: 52% !important; }
+      .p-contact { width: 44% !important; }
+      .p-face { width: 62% !important; margin: 12px auto 0; }
+      .p-hi, .p-heading, .p-form, .p-line { width: 100% !important; }
+      .p-heading { margin-top: 24px; }
+      .p-website { width: 80% !important; margin: 8px auto 0; }
+      .p-line { margin-top: 24px; }
+      .p-ftext { width: 64% !important; }
+      .p-flinks { width: 30% !important; }
+      .hot input { font-size: 16px; }          /* 16px stops iOS zooming in on focus */
+      .thanks { font-size: 15px; }
+    }
   </style>
 </head>
 <body id="top">
   <div class="sheet">
-    <header class="slice">
-      <img src="header.jpg" width="2048" height="253" alt="">
-      <a class="hot" href="#top" style="left:4.49%;top:19.37%;width:25.39%;height:62.06%"><h1 class="sr-only">Eric Millington website</h1><span class="sr-only">Home</span></a>
-      <a class="hot" href="#contact" style="left:66.99%;top:22.13%;width:26.27%;height:41.50%">Contact me</a>
+    <header>
+      <div class="piece p-logo" style="left:3.906%;top:0.849%;width:26.367%"><img src="p-logo.jpg" width="540" height="209" alt=""><a class="hot" href="#top" style="left:0;top:0;width:100%;height:100%"><h1 class="sr-only">Eric Millington website</h1><span class="sr-only">Home</span></a></div>
+      <div class="piece p-contact" style="left:65.283%;top:1.603%;width:28.613%"><img src="p-contact.jpg" width="586" height="151" alt=""><a class="hot" href="#contact" style="left:5.97%;top:14.57%;width:91.81%;height:69.54%">Contact me</a></div>
     </header>
 
     <main>
-      <section class="slice" aria-label="About">
-        <img src="intro.jpg" width="2048" height="642" alt="Hand-drawn portrait of Eric in a baseball cap with a beard, next to the words: Hi! I'm Eric and I make things on the web and get people noticed online.">
-      </section>
+      <div class="piece p-face" style="left:9.180%;top:13.107%;width:25.928%"><img src="p-face.jpg" width="531" height="614" alt="Hand-drawn portrait of Eric in a baseball cap, with a beard and a smile"></div>
+      <div class="piece p-hi" style="left:37.988%;top:16.690%;width:48.242%"><img src="p-hi.jpg" width="988" height="435" alt="Hi! I'm Eric and I make things on the web and get people noticed online."></div>
 
-      <section class="slice" id="contact" aria-labelledby="work-title">
-        <img src="work.jpg" width="2048" height="874" alt="A hand-drawn sketch of a website layout, labeled: Website!">
-        <h2 class="sr-only" id="work-title">Let's work together</h2>
-        <form name="contact" action="#" method="post" data-thanks>
-          <div class="hot" style="left:24.66%;top:29.18%;width:27.59%;height:8.58%"><label class="sr-only" for="f-name">Name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
-          <div class="hot" style="left:25.39%;top:45.77%;width:27.34%;height:8.58%"><label class="sr-only" for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
-          <div class="hot" style="left:26.12%;top:63.50%;width:26.61%;height:9.15%"><label class="sr-only" for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel"></div>
-          <button class="hot" type="submit" style="left:38.33%;top:83.52%;width:16.60%;height:10.30%">Go!</button>
-          <p class="hot thanks" role="status" style="left:7.32%;top:95.54%;width:50.29%;height:4.00%"></p>
-        </form>
-      </section>
+      <div class="piece p-heading" id="contact" style="left:7.275%;top:44.460%;width:50.146%"><img src="p-heading.jpg" width="1027" height="163" alt=""><h2 class="sr-only">Let's work together</h2></div>
+      <form name="contact" action="#" method="post" data-thanks>
+        <div class="piece p-form" style="left:8.838%;top:52.947%;width:48.193%"><img src="p-form.jpg" width="987" height="626" alt="">
+          <div class="hot" style="left:32.83%;top:4.31%;width:57.24%;height:11.98%"><label class="sr-only" for="f-name">Name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+          <div class="hot" style="left:34.35%;top:27.48%;width:56.74%;height:11.98%"><label class="sr-only" for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+          <div class="hot" style="left:35.87%;top:52.24%;width:55.22%;height:12.78%"><label class="sr-only" for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel"></div>
+          <button class="hot" type="submit" style="left:61.20%;top:80.19%;width:34.45%;height:14.38%">Go!</button>
+          <p class="hot thanks" role="status" style="left:0;top:100%;width:100%;height:auto;padding-top:1.5%"></p>
+        </div>
+      </form>
+      <div class="piece p-website" style="left:61.182%;top:42.150%;width:32.568%"><img src="p-website.jpg" width="667" height="749" alt="A hand-drawn sketch of a website layout, labeled: Website!"></div>
     </main>
 
-    <footer class="slice">
-      <img src="footer.jpg" width="2048" height="352" alt="This is a footer">
+    <footer>
+      <div class="piece p-line" style="left:8.789%;top:84.913%;width:86.377%"><img src="p-line.jpg" width="1769" height="96" alt=""></div>
+      <div class="piece p-ftext" style="left:32.520%;top:87.364%;width:34.814%"><img src="p-ftext.jpg" width="713" height="88" alt="This is a footer"></div>
       <nav aria-label="Footer">
-        <a class="hot" href="#top" style="left:81.54%;top:28.69%;width:9.28%;height:24.15%">Home</a>
-        <a class="hot" href="#contact" style="left:81.05%;top:58.52%;width:13.67%;height:19.89%">Contact</a>
+        <div class="piece p-flinks" style="left:81.006%;top:88.213%;width:14.160%"><img src="p-flinks.jpg" width="290" height="175" alt="">
+          <a class="hot" href="#top" style="left:3.79%;top:-0.57%;width:65.52%;height:48.57%">Home</a>
+          <a class="hot" href="#contact" style="left:0.34%;top:59.43%;width:96.55%;height:40.00%">Contact</a>
+        </div>
       </nav>
     </footer>
   </div>
 
   <script>
-    /* Demo submit: with action="#", show a thank-you line under the Go! button.
+    /* Demo submit: with action="#", show a thank-you line under the form.
        Point action at a real endpoint (Formspree, Basin, etc.) to receive messages. */
     document.querySelector("form[data-thanks]").addEventListener("submit", function (e) {
       var action = this.getAttribute("action");
-      var status = this.querySelector(".thanks");
       if (action && action !== "#") return;
       e.preventDefault();
-      status.textContent = "Thanks! Talk soon.";
+      this.querySelector(".thanks").textContent = "Thanks! Talk soon.";
       this.reset();
     });
   </script>
