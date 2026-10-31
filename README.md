@@ -97,6 +97,26 @@ The shared JavaScript still runs the mobile menu, reveal animations, counters, f
 
 ---
 
+## Template 2: Editorial (`templates/editorial/`)
+
+A second, standalone template with a completely different design language. It's magazine-style, photography-led and deliberately asymmetric. The placeholder brand is **Halfmoon Coffee**, a roaster and café.
+
+- **Own stylesheet** (`editorial.css`), not built on `assets/css`. It shares `assets/js/main.js` for the nav, theme toggle, reveal animations, form validation, sticky mobile buttons and click tracking. `editorial.js` adds the product rail, the bag counter and the subscription picker.
+- **Breaks the column grid on purpose:**
+  - an oversized headline with a photo set inside the line
+  - a hero photo that bleeds off the right edge, with a second photo and a rotating badge overlapping it
+  - a product rail that scrolls past the page margin
+  - a full-bleed half-photo, half-color subscription block
+  - a staggered, overlapping café photo collage
+  - offset process columns with outlined numerals
+  - a giant cropped wordmark in the footer
+- **Typography:** Instrument Serif for display, Geist for body text, Geist Mono for labels.
+- **Rebrand knobs:** `--accent-hue` and `--warm` at the top of `editorial.css`.
+- **SEO:** `CafeOrCoffeeShop`, a product `ItemList` with prices, and `FAQPage` structured data.
+- **Photos:** `img/` currently holds labeled placeholders. `img/PHOTOS.md` is the shot list with file names and sizes. Drop real photos in with the same names.
+
+---
+
 ## What's built in
 
 **SEO**

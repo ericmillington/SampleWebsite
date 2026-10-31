@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+<!--
+  EDITORIAL TEMPLATE — "Halfmoon Coffee" (placeholder brand: coffee roaster & café)
+  Photography-led, asymmetric layout. Standalone CSS (editorial.css); shares ../../assets/js/main.js.
+  Rebrand: edit the knobs at the top of editorial.css, swap photos in img/ (same file names),
+  then find & replace: Halfmoon · example.com · (555) 123-4567 · hello@example.com · Your City
+-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <title>Halfmoon Coffee — Small-Batch Roastery &amp; Café in Your City</title>
+  <meta name="description" content="Single-origin coffee roasted every Tuesday and delivered within 72 hours. Shop fresh beans, subscribe and save 15%, or visit our café in Your City.">
+  <link rel="canonical" href="https://www.example.com/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Halfmoon Coffee">
+  <meta property="og:title" content="Halfmoon Coffee — Slow coffee for fast mornings">
+  <meta property="og:description" content="Single-origin beans, roasted every Tuesday, at your door within 72 hours.">
+  <meta property="og:url" content="https://www.example.com/">
+  <meta property="og:image" content="https://www.example.com/img/hero-main.jpg">
+  <meta property="og:image:alt" content="A barista pouring latte art at the Halfmoon café counter.">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#efe9df" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#16110e" media="(prefers-color-scheme: dark)">
+
+  <script>try { var t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Geist:wght@400..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="img/hero-main.jpg" fetchpriority="high">
+
+  <link rel="stylesheet" href="editorial.css">
+  <script src="../../assets/js/main.js" defer></script>
+  <script src="editorial.js" defer></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CafeOrCoffeeShop",
+        "@id": "https://www.example.com/#cafe",
+        "name": "Halfmoon Coffee",
+        "description": "Small-batch coffee roastery and café. Single-origin beans roasted every Tuesday.",
+        "url": "https://www.example.com/",
+        "image": "https://www.example.com/img/hero-main.jpg",
+        "telephone": "+1-555-123-4567",
+        "email": "hello@example.com",
+        "servesCuisine": "Coffee",
+        "priceRange": "$",
+        "hasMenu": "https://www.example.com/#visit",
+        "address": { "@type": "PostalAddress", "streetAddress": "123 Main Street", "addressLocality": "Your City", "addressRegion": "ST", "postalCode": "00000", "addressCountry": "US" },
+        "openingHoursSpecification": [
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "07:00", "closes": "16:00" },
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "08:00", "closes": "15:00" }
+        ],
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "860" },
+        "sameAs": ["https://www.instagram.com/"]
+      },
+      {
+        "@type": "ItemList",
+        "name": "Coffee beans",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "item": { "@type": "Product", "name": "Huila — Colombia", "description": "Red apple, panela, cocoa nib. 340g whole bean.", "image": "https://www.example.com/img/bag-1.jpg", "offers": { "@type": "Offer", "price": "19.00", "priceCurrency": "USD", "availability": "https://schema.org/InStock" } } },
+          { "@type": "ListItem", "position": 2, "item": { "@type": "Product", "name": "Sidamo — Ethiopia", "description": "Bergamot, peach, jasmine. 340g whole bean.", "image": "https://www.example.com/img/bag-2.jpg", "offers": { "@type": "Offer", "price": "21.00", "priceCurrency": "USD", "availability": "https://schema.org/InStock" } } },
+          { "@type": "ListItem", "position": 3, "item": { "@type": "Product", "name": "Half Moon House Blend", "description": "Milk chocolate, toffee, hazelnut. 340g whole bean.", "image": "https://www.example.com/img/bag-3.jpg", "offers": { "@type": "Offer", "price": "17.00", "priceCurrency": "USD", "availability": "https://schema.org/InStock" } } },
+          { "@type": "ListItem", "position": 4, "item": { "@type": "Product", "name": "Night Shift Decaf", "description": "Brown sugar, cherry, almond. 340g whole bean.", "image": "https://www.example.com/img/bag-4.jpg", "offers": { "@type": "Offer", "price": "18.00", "priceCurrency": "USD", "availability": "https://schema.org/InStock" } } }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "When do you roast?", "acceptedAnswer": { "@type": "Answer", "text": "Every Tuesday. Orders placed by Monday at midnight ship from that week's roast, so your beans arrive within 72 hours of roasting." } },
+          { "@type": "Question", "name": "Whole bean or ground?", "acceptedAnswer": { "@type": "Answer", "text": "Whole bean stays fresh longest, but we'll grind for espresso, filter, French press or moka pot at no extra cost — just choose at checkout." } },
+          { "@type": "Question", "name": "How does the subscription work?", "acceptedAnswer": { "@type": "Answer", "text": "Pick a coffee and a frequency, and save 15% on every bag. Skip, swap or cancel anytime from your account — no fees, no lock-in." } },
+          { "@type": "Question", "name": "Do you ship nationwide?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Shipping is free on orders over $40 and most orders arrive in 2–3 business days." } }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14M12 5v14"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 8h18M3 16h18"/></symbol>
+    <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 8h14l-1 13H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-moonmark" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M16 1a15 15 0 0 1 0 30z" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2c.6 4.8 2.6 7.4 10 10-7.4 2.6-9.4 5.2-10 10-.6-4.8-2.6-7.4-10-10 7.4-2.6 9.4-5.2 10-10z" fill="currentColor" stroke="none"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="announce" data-id="editorial-shipping" role="region" aria-label="Announcement">
+    <div class="wrap">
+      <p>Free shipping over $40 · This week's roast ships Tuesday. <a href="#shop" data-track="cta_announce">Shop now</a></p>
+      <button class="announce__close" type="button" aria-label="Dismiss announcement"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="wrap header__inner">
+      <a class="logo" href="./" aria-label="Halfmoon Coffee — home">
+        <svg aria-hidden="true"><use href="#i-moonmark"/></svg>
+        Halfmoon
+      </a>
+      <nav class="nav" id="site-nav" aria-label="Main">
+        <ul class="nav__list" role="list">
+          <li><a class="nav__link" href="#shop">Shop</a></li>
+          <li><a class="nav__link" href="#subscribe">Subscribe</a></li>
+          <li><a class="nav__link" href="#visit">Café</a></li>
+          <li><a class="nav__link" href="#process">Sourcing</a></li>
+          <li><a class="nav__link" href="#wholesale">Wholesale</a></li>
+        </ul>
+        <div class="nav__mobile-cta">
+          <a class="btn btn--accent" href="#shop" data-track="cta_nav_mobile">Shop the beans <svg class="icon icon--arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn" href="#visit" data-track="visit_nav_mobile">Visit the café</a>
+        </div>
+      </nav>
+      <div class="header__actions">
+        <button class="icon-btn theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+          <svg class="icon icon--sun" aria-hidden="true"><use href="#i-sun"/></svg>
+          <svg class="icon icon--moon" aria-hidden="true"><use href="#i-moon"/></svg>
+        </button>
+        <a class="icon-btn bag" href="#shop" aria-label="Bag, 0 items" data-track="bag_header"><svg class="icon" aria-hidden="true"><use href="#i-bag"/></svg><span class="bag__count" aria-hidden="true">0</span></a>
+        <a class="btn btn--sm btn--accent header__cta" href="#shop" data-track="cta_header">Shop beans</a>
+        <button class="icon-btn menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+          <svg class="icon icon--menu" aria-hidden="true"><use href="#i-menu"/></svg>
+          <svg class="icon icon--close" aria-hidden="true"><use href="#i-x"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO — oversized type, offset & overlapping photos, main photo bleeds off the right edge -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="wrap">
+        <div class="hero__meta" data-reveal>
+          <span class="label label--ink">Roastery &amp; café</span>
+          <span class="label">Est. 2014 — Your City</span>
+          <span class="label">Roasted every Tuesday</span>
+        </div>
+        <h1 class="hero__title" id="hero-title" data-reveal style="--i:1">
+          <span class="line">Slow coffee</span>
+          <span class="line line--indent">for <span class="pill-photo"><img src="img/pill-cup.jpg" alt="" width="240" height="112"></span> fast</span>
+          <span class="line line--right"><em>mornings.</em></span>
+        </h1>
+
+        <div class="grid hero__body">
+          <div class="hero__main bleed-right" data-reveal style="--i:2">
+            <figure class="photo">
+              <img src="img/hero-main.jpg" alt="A barista pouring latte art at the Halfmoon café counter" width="1600" height="1100" fetchpriority="high">
+              <figcaption>The café, Main Street</figcaption>
+            </figure>
+            <a class="spin-badge" href="#subscribe" data-track="cta_badge" aria-label="Subscribe and save 15%">
+              <svg class="ring" viewBox="0 0 132 132" aria-hidden="true">
+                <defs><path id="ring-path" d="M66 66m-50 0a50 50 0 1 1 100 0a50 50 0 1 1-100 0"/></defs>
+                <text><textPath href="#ring-path" textLength="312" lengthAdjust="spacing">Subscribe &amp; save 15% · Subscribe &amp; save 15% · </textPath></text>
+              </svg>
+              <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a>
+          </div>
+          <figure class="photo hero__small" data-reveal style="--i:3">
+            <img src="img/hero-small.jpg" alt="Pour-over coffee dripping into a glass carafe" width="800" height="1000">
+          </figure>
+          <div class="hero__intro" data-reveal style="--i:2">
+            <p class="lead">Single-origin beans from farms we know by name, roasted in small batches and at your door within 72 hours.</p>
+            <div class="hero__ctas">
+              <a class="btn btn--accent" href="#shop" data-track="cta_hero_primary">Shop the beans <svg class="icon icon--arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <a class="btn" href="#visit" data-track="cta_hero_visit">Visit the café</a>
+            </div>
+            <p class="hero__fine"><span class="label">★ 4.9 from 860 reviews</span><span class="label">Free shipping $40+</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span class="marquee__item">Single origin <svg><use href="#i-star"/></svg></span><span class="marquee__item">Roasted weekly <svg><use href="#i-star"/></svg></span><span class="marquee__item">Direct trade <svg><use href="#i-star"/></svg></span><span class="marquee__item">Delivered fresh <svg><use href="#i-star"/></svg></span>
+        <span class="marquee__item">Single origin <svg><use href="#i-star"/></svg></span><span class="marquee__item">Roasted weekly <svg><use href="#i-star"/></svg></span><span class="marquee__item">Direct trade <svg><use href="#i-star"/></svg></span><span class="marquee__item">Delivered fresh <svg><use href="#i-star"/></svg></span>
+      </div>
+    </div>
+
+    <!-- STATEMENT — big editorial paragraph with inline photo "pills" -->
+    <section class="section" aria-label="About Halfmoon">
+      <div class="wrap grid statement">
+        <span class="label" data-reveal>(01) — What we do</span>
+        <p class="statement__text" data-reveal style="--i:1">
+          We buy directly from growers <span class="pill-photo"><img src="img/pill-cherries.jpg" alt="" loading="lazy" width="240" height="112"></span> in Huila, Sidamo and Cauca, roast in tiny batches <span class="pill-photo"><img src="img/pill-roast.jpg" alt="" loading="lazy" width="240" height="112"></span> every Tuesday, <span class="muted">and get it to your kitchen</span> <span class="pill-photo"><img src="img/pill-box.jpg" alt="" loading="lazy" width="240" height="112"></span> <span class="muted">while it still tastes like something.</span>
+        </p>
+        <div class="statement__sign" data-reveal style="--i:2">
+          <div class="figure"><strong>72h</strong><span class="label">Roast to doorstep</span></div>
+          <div class="figure"><strong>11</strong><span class="label">Partner farms</span></div>
+          <div class="figure"><strong>+38%</strong><span class="label">Paid above fair trade</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SHOP — product rail breaks out to the viewport edge -->
+    <section class="section" id="shop" aria-labelledby="shop-title" style="padding-top:0">
+      <div class="wrap">
+        <div class="rail-head" data-reveal>
+          <div>
+            <span class="label">(02) — This week's roast</span>
+            <h2 id="shop-title" style="margin-top:14px">Fresh <em>beans</em>, shipped Tuesday.</h2>
+          </div>
+          <div class="rail-nav">
+            <button type="button" data-rail-prev aria-label="Previous coffees"><svg class="icon" aria-hidden="true"><use href="#i-left"/></svg></button>
+            <button type="button" data-rail-next aria-label="More coffees"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          </div>
+        </div>
+      </div>
+      <ul class="rail" role="list" data-rail data-reveal style="--i:1">
+        <li class="product">
+          <figure class="photo product__img" style="--tint:oklch(86% .06 30)"><img src="img/bag-1.jpg" alt="Bag of Huila, Colombia whole-bean coffee" loading="lazy" width="800" height="1000"><span class="product__tag">Bestseller</span></figure>
+          <div class="product__row"><h3>Huila</h3><span class="product__price">$19</span></div>
+          <p class="label">Colombia · Washed · Medium</p>
+          <p class="product__notes">Red apple, panela, cocoa nib.</p>
+          <button class="add-btn" type="button" data-add data-track="add_to_bag" data-product="Huila"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg> <span>Add to bag</span></button>
+        </li>
+        <li class="product">
+          <figure class="photo product__img" style="--tint:oklch(88% .05 95)"><img src="img/bag-2.jpg" alt="Bag of Sidamo, Ethiopia whole-bean coffee" loading="lazy" width="800" height="1000"><span class="product__tag">New</span></figure>
+          <div class="product__row"><h3>Sidamo</h3><span class="product__price">$21</span></div>
+          <p class="label">Ethiopia · Natural · Light</p>
+          <p class="product__notes">Bergamot, peach, jasmine.</p>
+          <button class="add-btn" type="button" data-add data-track="add_to_bag" data-product="Sidamo"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg> <span>Add to bag</span></button>
+        </li>
+        <li class="product">
+          <figure class="photo product__img" style="--tint:oklch(84% .04 60)"><img src="img/bag-3.jpg" alt="Bag of Half Moon house blend coffee" loading="lazy" width="800" height="1000"></figure>
+          <div class="product__row"><h3>House Blend</h3><span class="product__price">$17</span></div>
+          <p class="label">Brazil + Colombia · Medium-dark</p>
+          <p class="product__notes">Milk chocolate, toffee, hazelnut.</p>
+          <button class="add-btn" type="button" data-add data-track="add_to_bag" data-product="House Blend"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg> <span>Add to bag</span></button>
+        </li>
+        <li class="product">
+          <figure class="photo product__img" style="--tint:oklch(84% .04 250)"><img src="img/bag-4.jpg" alt="Bag of Night Shift decaf coffee" loading="lazy" width="800" height="1000"></figure>
+          <div class="product__row"><h3>Night Shift</h3><span class="product__price">$18</span></div>
+          <p class="label">Decaf · Sugarcane process</p>
+          <p class="product__notes">Brown sugar, cherry, almond.</p>
+          <button class="add-btn" type="button" data-add data-track="add_to_bag" data-product="Night Shift"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg> <span>Add to bag</span></button>
+        </li>
+        <li class="product">
+          <figure class="photo product__img" style="--tint:oklch(85% .05 150)"><img src="img/bag-5.jpg" alt="Halfmoon brewing gear and coffee gift set" loading="lazy" width="800" height="1000"><span class="product__tag">Gift</span></figure>
+          <div class="product__row"><h3>Brew Kit</h3><span class="product__price">$64</span></div>
+          <p class="label">Dripper · filters · 2 bags</p>
+          <p class="product__notes">Everything for a great first cup.</p>
+          <button class="add-btn" type="button" data-add data-track="add_to_bag" data-product="Brew Kit"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg> <span>Add to bag</span></button>
+        </li>
+      </ul>
+    </section>
+
+    <!-- SUBSCRIBE — full-bleed split: photo edge-to-edge, accent panel -->
+    <section class="split-bleed" id="subscribe" aria-labelledby="sub-title">
+      <div class="split-bleed__img reveal-photo"><img src="img/sub.jpg" alt="Fresh coffee bags on a kitchen counter in morning light" loading="lazy" width="1200" height="1400"></div>
+      <div class="split-bleed__panel">
+        <div data-reveal>
+          <span class="label">(03) — Subscription</span>
+          <h2 id="sub-title">Never run <em>out.</em></h2>
+          <p class="lead">Fresh beans on your schedule, 15% off every bag. Skip, swap or cancel any time.</p>
+          <fieldset class="freq">
+            <legend class="label">Deliver every</legend>
+            <label><input type="radio" name="freq" value="1" data-price="16.15"><span>Week</span></label>
+            <label><input type="radio" name="freq" value="2" data-price="16.15" checked><span>2 weeks</span></label>
+            <label><input type="radio" name="freq" value="4" data-price="16.15"><span>Month</span></label>
+          </fieldset>
+        </div>
+        <div data-reveal style="--i:1">
+          <p class="sub-price"><span data-sub-price>$16.15</span> <small>/ bag · <span data-sub-freq>every 2 weeks</span></small></p>
+          <div class="hero__ctas" style="margin-top:20px">
+            <a class="btn btn--dark" href="#shop" data-track="cta_subscribe">Start my subscription <svg class="icon icon--arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="btn" href="#faq">How it works</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAFÉ — staggered, overlapping collage -->
+    <section class="section" id="visit" aria-labelledby="visit-title">
+      <div class="wrap grid collage">
+        <figure class="photo collage__a reveal-photo"><img src="img/cafe-1.jpg" alt="Inside the Halfmoon café: wooden counter, plants and morning light" loading="lazy" width="1000" height="1250"><figcaption>Main Street, since 2014</figcaption></figure>
+        <div class="collage__title" data-reveal>
+          <span class="label">(04) — The café</span>
+          <h2 id="visit-title">Come sit <em>a while.</em></h2>
+          <p class="lead">Espresso pulled on our own beans, pastries from the bakery next door, and a big table that's usually full of laptops and dogs.</p>
+        </div>
+        <figure class="photo collage__b reveal-photo"><img src="img/cafe-2.jpg" alt="An espresso shot pouring into a small ceramic cup" loading="lazy" width="800" height="800"></figure>
+        <figure class="photo collage__c reveal-photo"><img src="img/cafe-3.jpg" alt="Friends talking over coffee and pastries at a window table" loading="lazy" width="1200" height="800"></figure>
+        <div class="collage__info" data-reveal>
+          <span class="label label--ink">From the bar</span>
+          <dl class="menu-rows">
+            <div><dt>Espresso</dt><dd>3.50</dd></div>
+            <div><dt>Flat white</dt><dd>4.75</dd></div>
+            <div><dt>Batch brew</dt><dd>3.25</dd></div>
+            <div><dt>Seasonal pour-over</dt><dd>5.50</dd></div>
+          </dl>
+          <dl class="hours"><dt class="label label--ink">Mon–Fri</dt><dd>7am – 4pm</dd><dt class="label label--ink">Sat–Sun</dt><dd>8am – 3pm</dd></dl>
+          <div class="visit-links">
+            <a class="link-line" href="https://maps.google.com/?q=123+Main+Street+Your+City" target="_blank" rel="noopener" data-track="directions">Get directions <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="link-line" href="tel:+15551234567" data-track="call_cafe">(555) 123-4567</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS — staggered columns, outlined numerals overlapping photos -->
+    <section class="section" id="process" aria-labelledby="process-title" style="padding-top:0">
+      <div class="wrap">
+        <div class="grid process-head" data-reveal>
+          <h2 id="process-title">From the farm <em>to your cup.</em></h2>
+          <p class="lead">We visit every partner farm, pay well above fair-trade minimums, and publish what we pay. Here's the journey.</p>
+        </div>
+        <ol class="steps">
+          <li class="step" data-reveal><span class="step__num" aria-hidden="true"></span><figure class="photo reveal-photo"><img src="img/step-1.jpg" alt="Ripe red coffee cherries on the branch" loading="lazy" width="600" height="800"></figure><h3>Picked ripe</h3><p>Hand-picked at peak sweetness by growers we've worked with for years.</p></li>
+          <li class="step" data-reveal style="--i:1"><span class="step__num" aria-hidden="true"></span><figure class="photo reveal-photo"><img src="img/step-2.jpg" alt="Coffee beans drying on raised beds in the sun" loading="lazy" width="600" height="800"></figure><h3>Slow dried</h3><p>Sun-dried on raised beds for up to three weeks.</p></li>
+          <li class="step" data-reveal style="--i:2"><span class="step__num" aria-hidden="true"></span><figure class="photo reveal-photo"><img src="img/step-3.jpg" alt="Freshly roasted beans tumbling in the roaster's cooling tray" loading="lazy" width="600" height="800"></figure><h3>Roasted Tuesday</h3><p>Small batches, profiled for each coffee, cupped before packing.</p></li>
+          <li class="step" data-reveal style="--i:3"><span class="step__num" aria-hidden="true"></span><figure class="photo reveal-photo"><img src="img/step-4.jpg" alt="A cup of coffee on a kitchen table" loading="lazy" width="600" height="800"></figure><h3>In your cup</h3><p>On your doorstep within 72 hours. Brew it, then tell us what you think.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- QUOTE + PRESS -->
+    <section class="section" id="reviews" aria-label="What people say" style="padding-top:0">
+      <div class="wrap">
+        <figure class="grid quote" data-reveal>
+          <blockquote>“<span class="pill-photo"><img src="img/quote-face.jpg" alt="" loading="lazy" width="200" height="200"></span> The Sidamo tastes like someone put a peach in my mug. I've tried every subscription out there — this is the one I kept.”</blockquote>
+          <figcaption><cite>Jess Okafor</cite><span class="label">Subscriber since 2021</span><span class="label">★★★★★</span></figcaption>
+        </figure>
+        <div class="press" data-reveal>
+          <span class="label">As seen in</span>
+          <span>The Morning Paper</span><span>City Eats</span><span>Brew Weekly</span><span>Good Food Guide</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHOLESALE — dark section, lead form (this is the template's #contact form) -->
+    <section class="section dark" id="wholesale" aria-labelledby="ws-title">
+      <div class="wrap grid wholesale" id="contact">
+        <div class="wholesale__copy" data-reveal>
+          <span class="label">(05) — Wholesale</span>
+          <h2 id="ws-title">Pour us at <em>your place.</em></h2>
+          <p class="lead">Cafés, restaurants and offices: fresh weekly deliveries, barista training and equipment support. We reply within one business day.</p>
+          <figure class="photo wholesale__photo reveal-photo"><img src="img/wholesale.jpg" alt="An espresso machine on a busy café counter" loading="lazy" width="1200" height="750"></figure>
+        </div>
+        <div class="wholesale__form" data-reveal style="--i:1">
+          <p>Tell us about your place — takes a minute.</p>
+          <form class="form" name="wholesale" action="#" method="post" data-validate data-success="thank-you.html" novalidate>
+            <div class="field">
+              <label for="f-name">Your name</label>
+              <input class="input" id="f-name" name="name" type="text" autocomplete="name" placeholder="Jane Smith" required aria-describedby="f-name-error">
+              <p class="field__error" id="f-name-error" aria-live="polite"></p>
+            </div>
+            <div class="field">
+              <label for="f-biz">Business</label>
+              <input class="input" id="f-biz" name="business" type="text" autocomplete="organization" placeholder="Corner Café" required aria-describedby="f-biz-error">
+              <p class="field__error" id="f-biz-error" aria-live="polite"></p>
+            </div>
+            <div class="field">
+              <label for="f-email">Email</label>
+              <input class="input" id="f-email" name="email" type="email" autocomplete="email" placeholder="jane@cornercafe.com" required aria-describedby="f-email-error">
+              <p class="field__error" id="f-email-error" aria-live="polite"></p>
+            </div>
+            <div class="field">
+              <label for="f-type">Type</label>
+              <select class="input" id="f-type" name="type" required aria-describedby="f-type-error">
+                <option value="">Choose one</option>
+                <option>Café</option><option>Restaurant</option><option>Office</option><option>Retail / grocery</option><option>Other</option>
+              </select>
+              <p class="field__error" id="f-type-error" aria-live="polite"></p>
+            </div>
+            <div class="field field--full">
+              <label for="f-msg">Weekly volume, equipment, questions <span>(optional)</span></label>
+              <textarea class="input" id="f-msg" name="message" rows="3" placeholder="We go through about 10kg a week…"></textarea>
+            </div>
+            <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="company_website" tabindex="-1" autocomplete="off"></label></div>
+            <p class="form-status" role="alert" hidden></p>
+            <div class="form__submit">
+              <button class="btn btn--accent" type="submit">Request wholesale pricing <svg class="icon icon--arrow" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+              <small>No spam. We'll only use this to reply.</small>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <div class="wrap grid faq">
+        <div class="faq__head" data-reveal>
+          <span class="label">(06) — Questions</span>
+          <h2 id="faq-title">Good to <em>know.</em></h2>
+          <p class="lead">Still curious? Email <a href="mailto:hello@example.com">hello@example.com</a>.</p>
+        </div>
+        <div class="faq__list" data-reveal style="--i:1">
+          <details name="faq" open><summary>When do you roast? <svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Every Tuesday. Orders placed by Monday at midnight ship from that week's roast, so your beans arrive within 72 hours of roasting.</p></details>
+          <details name="faq"><summary>Whole bean or ground? <svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Whole bean stays fresh longest, but we'll grind for espresso, filter, French press or moka pot at no extra cost — just choose at checkout.</p></details>
+          <details name="faq"><summary>How does the subscription work? <svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Pick a coffee and a frequency, and save 15% on every bag. Skip, swap or cancel anytime from your account — no fees, no lock-in.</p></details>
+          <details name="faq"><summary>Do you ship nationwide? <svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Yes. Shipping is free on orders over $40 and most orders arrive in 2–3 business days.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="grid footer__top">
+        <div class="newsletter">
+          <h2>Roast notes, <em>once a month.</em></h2>
+          <form name="newsletter" action="#" method="post" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed ✓';">
+            <label class="sr-only" for="nl-email">Email address</label>
+            <input id="nl-email" type="email" name="email" placeholder="Your email" autocomplete="email" required>
+            <button class="link-line" type="submit" data-track="newsletter">Sign up <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          </form>
+        </div>
+        <nav class="footer__col" aria-labelledby="ft-shop">
+          <span class="label" id="ft-shop">Shop</span>
+          <ul><li><a href="#shop">Coffee</a></li><li><a href="#subscribe">Subscriptions</a></li><li><a href="#shop">Brew gear</a></li><li><a href="#wholesale">Wholesale</a></li></ul>
+        </nav>
+        <nav class="footer__col" aria-labelledby="ft-about">
+          <span class="label" id="ft-about">About</span>
+          <ul><li><a href="#process">Sourcing</a></li><li><a href="#visit">The café</a></li><li><a href="#faq">FAQ</a></li><li><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a></li></ul>
+        </nav>
+        <div class="footer__col">
+          <span class="label">Visit</span>
+          <address><span>123 Main Street<br>Your City, ST 00000</span><a href="tel:+15551234567">(555) 123-4567</a><a href="mailto:hello@example.com">hello@example.com</a></address>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span class="label">© <span data-year>2026</span> Halfmoon Coffee</span>
+        <ul role="list"><li><a class="label" href="../../privacy.html">Privacy</a></li><li><a class="label" href="../../">Other templates</a></li></ul>
+      </div>
+    </div>
+    <p class="wordmark" aria-hidden="true">Half<em>moon</em></p>
+  </footer>
+
+  <div class="sticky-cta" aria-label="Quick actions">
+    <a class="btn" href="#visit" data-track="visit_sticky">Visit</a>
+    <a class="btn btn--accent" href="#shop" data-track="cta_sticky">Shop beans <svg class="icon icon--arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+  </div>
+</body>
+</html>
